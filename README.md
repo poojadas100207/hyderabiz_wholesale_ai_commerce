@@ -1,7 +1,8 @@
-# 🛍️ Aura — Autonomous E-Commerce Shopping Concierge Agent
+# 🛍️ Hyderabiz Wholesale — AI-Powered B2B Food Commerce Platform
 
-An advanced, memory-augmented AI shopping concierge built with **LangChain**, the **Google Gemini API**, **Python**, and a **ChromaDB vector database**. Aura understands user preferences, searches and recommends products dynamically, synthesizes customer reviews, tracks price drops, and assists with shopping cart and checkout management.
+[![Live App on Vercel](https://img.shields.io/badge/Hosted%20App-Live%20Preview-brightgreen)](https://hyderabiz-wholesale-ai-commerce.vercel.app/)
 
+An advanced, memory-augmented B2B food commerce and wholesale platform designed specifically for cafes, bakeries, sweet shops, and grocers across Hyderabad.
 ---
 
 ## 🌟 Key Features
