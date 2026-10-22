@@ -1,0 +1,2399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hyderabiz Wholesale | B2B Food Supplies & AI Concierge</title>
+  <meta name="description" content="Hyderabad's premier B2B wholesale platform for bakery raw materials, Irani chai essentials, regional snacks, and spices with AI-powered ordering.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'] },
+          colors: {
+            brand: { DEFAULT: "#1d4ed8", dark: "#1e3a8a", light: "#3b82f6" },
+            saffron: { DEFAULT: "#f59e0b", dark: "#d97706", light: "#fbbf24" },
+            emerald: { DEFAULT: "#059669", dark: "#047857", light: "#10b981" },
+            ink: "#0f172a"
+          },
+          boxShadow: {
+            card: "0 4px 20px -2px rgba(15, 23, 42, 0.08)",
+            glow: "0 0 25px rgba(29, 78, 216, 0.35)",
+            pop: "0 10px 30px -5px rgba(0, 0, 0, 0.2)"
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth }
+    body { background-color: #f8fafc; font-family: 'Plus Jakarta Sans', sans-serif }
+    .hide-scrollbar::-webkit-scrollbar { display:none }
+    .hide-scrollbar { scrollbar-width:none }
+    .line-clamp-1 { display:-webkit-box; -webkit-line-clamp:1; -webkit-box-orient:vertical; overflow:hidden }
+    .line-clamp-2 { display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden }
+    .drawer { transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1) }
+    .modal { transition: opacity 0.2s ease, visibility 0.2s ease }
+    .modal.hidden { opacity:0; visibility:hidden; pointer-events:none }
+    .toast { animation: toastIn 0.3s cubic-bezier(0.16, 1, 0.3, 1), toastOut 0.4s ease 2.7s forwards }
+    @keyframes toastIn { from { transform: translateY(20px) scale(0.95); opacity: 0 } to { transform: translateY(0) scale(1); opacity: 1 } }
+    @keyframes toastOut { to { transform: translateY(10px); opacity: 0 } }
+    .ai-bubble-bot { animation: floatSlow 4s ease-in-out infinite }
+    @keyframes floatSlow { 0%, 100% { transform: translateY(0px) } 50% { transform: translateY(-4px) } }
+    input[type=range] { accent-color: #1d4ed8 }
+  </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-brand selection:text-white">
+
+  <!-- Top Announcement Bar -->
+  <div class="bg-slate-900 text-white text-xs border-b border-slate-800">
+    <div class="mx-auto flex max-w-[1520px] items-center justify-between gap-3 px-4 py-2">
+      <div class="flex items-center gap-2">
+        <span class="inline-block h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+        <span class="font-medium">🚚 Same-day dispatch from <b>Bahadurpura Central Hub</b> on orders before 2:00 PM</span>
+      </div>
+      <div class="hidden md:flex items-center gap-4 text-slate-300">
+        <span>✨ 100% GST Invoices with Input Tax Credit (ITC)</span>
+        <span>•</span>
+        <span>🤖 AI Concierge Online for Custom Quotes</span>
+        <span>•</span>
+        <a href="tel:+914040001234" class="font-bold text-saffron hover:underline">☎ +91 40 4000 1234</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-200">
+    <div class="mx-auto max-w-[1520px] px-4 py-3">
+      <div class="flex flex-wrap items-center gap-3">
+        <!-- Logo -->
+        <button class="text-left group flex items-center gap-2" onclick="goHome()">
+          <div class="h-10 w-10 rounded-xl bg-gradient-to-tr from-brand to-brand-light flex items-center justify-center text-white font-extrabold text-xl shadow-md">
+            H
+          </div>
+          <div>
+            <div class="text-2xl font-black tracking-tight text-slate-900 leading-none group-hover:text-brand transition">
+              hyderabiz<span class="text-saffron">.</span>
+            </div>
+            <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400">B2B Wholesale & AI Commerce</div>
+          </div>
+        </button>
+
+        <!-- Delivery Area Dropdown -->
+        <label class="hidden lg:flex items-center gap-2 rounded-xl bg-slate-100 px-3.5 py-2 text-xs font-semibold text-slate-700 hover:bg-slate-200 transition cursor-pointer border border-slate-200/70">
+          <span class="text-brand">📍</span>
+          <span class="text-slate-400">Zone:</span>
+          <select id="location" class="bg-transparent font-bold text-slate-900 outline-none cursor-pointer" onchange="updateDeliveryArea()">
+            <option value="Banjara Hills">Banjara Hills, Hyd</option>
+            <option value="Abids">Abids & Old City</option>
+            <option value="Secunderabad">Secunderabad</option>
+            <option value="Mehdipatnam">Mehdipatnam & Tolichowki</option>
+            <option value="Charminar">Charminar / Bahadurpura</option>
+            <option value="Kukatpally">Kukatpally / KPHB</option>
+            <option value="Hitec City">Hitec City & Madhapur</option>
+            <option value="Jubilee Hills">Jubilee Hills</option>
+          </select>
+        </label>
+
+        <!-- Search Bar with Live Suggestions -->
+        <div class="order-3 flex min-w-[280px] flex-1 md:order-none relative">
+          <div class="relative w-full">
+            <span class="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-sm">🔍</span>
+            <input id="search" type="search" placeholder="Search Osmania biscuits, bakery maida, Guntur chilli, millet..." 
+              class="w-full rounded-xl border border-slate-200 bg-slate-50 pl-10 pr-12 py-2.5 text-sm text-slate-900 placeholder-slate-400 focus:bg-white focus:border-brand focus:ring-2 focus:ring-brand/20 outline-none transition" 
+              aria-label="Search wholesale catalog">
+            <kbd class="hidden sm:inline-block absolute right-3 top-1/2 -translate-y-1/2 rounded bg-slate-200 px-1.5 py-0.5 text-[10px] font-semibold text-slate-500">/</kbd>
+          </div>
+        </div>
+
+        <!-- Header Actions: AI, Calculator, Compare, Orders, Cart -->
+        <div class="ml-auto flex items-center gap-1.5 sm:gap-2 text-xs font-bold">
+          <!-- AI Concierge Trigger -->
+          <button onclick="toggleAiDrawer(true)" class="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 px-3.5 py-2 text-white shadow-md hover:shadow-glow hover:brightness-110 transition">
+            <span class="text-sm">🤖</span>
+            <span class="hidden sm:inline">AI Concierge</span>
+            <span class="h-2 w-2 rounded-full bg-emerald-300 animate-pulse"></span>
+          </button>
+
+          <!-- Profit Calculator Button -->
+          <button onclick="openModal('roiModal')" class="hidden md:flex items-center gap-1.5 rounded-xl border border-slate-200 bg-white px-3 py-2 text-slate-700 hover:bg-slate-50 transition shadow-sm">
+            <span>🧮</span>
+            <span>Margin Calc</span>
+          </button>
+
+          <!-- Compare Button -->
+          <button onclick="openCompareModal()" id="compareBtn" class="relative hidden sm:flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-slate-700 hover:bg-slate-50 transition shadow-sm">
+            <span>⚖️</span>
+            <span>Compare</span>
+            <span id="compareCount" class="hidden rounded-full bg-brand px-1.5 py-0.2 text-[10px] text-white font-extrabold">0</span>
+          </button>
+
+          <!-- Orders Dashboard Button -->
+          <button onclick="openModal('dashboardModal')" class="flex items-center gap-1 rounded-xl border border-slate-200 bg-white px-3 py-2 text-slate-700 hover:bg-slate-50 transition shadow-sm">
+            <span>📦</span>
+            <span class="hidden sm:inline">Orders</span>
+          </button>
+
+          <!-- Cart Drawer Button -->
+          <button onclick="openCart()" class="relative flex items-center gap-1.5 rounded-xl bg-brand px-4 py-2 text-white shadow-md hover:bg-brand-dark transition">
+            <span class="text-sm">🛒</span>
+            <span>Cart</span>
+            <span id="cartCount" class="rounded-full bg-saffron px-1.5 py-0.5 text-[10px] font-black text-slate-900 leading-none">0</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Category Navigation Bar -->
+      <div class="hide-scrollbar mt-3 flex items-center gap-2 overflow-x-auto text-xs font-semibold pt-1 border-t border-slate-100">
+        <span class="text-slate-400 text-[11px] uppercase tracking-wider shrink-0 mr-1 font-bold">Categories:</span>
+        <button class="cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-bold bg-brand text-white shadow-sm" onclick="setCategory('All', this)">All Products</button>
+        <button class="cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-medium text-slate-600 hover:bg-slate-100" onclick="setCategory('Bakery Raw Materials', this)">🥐 Bakery Raw Materials</button>
+        <button class="cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-medium text-slate-600 hover:bg-slate-100" onclick="setCategory('Osmania & Toast', this)">🍪 Osmania & Toast</button>
+        <button class="cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-medium text-slate-600 hover:bg-slate-100" onclick="setCategory('Beverages & Milk', this)">☕ Beverages & Irani Chai</button>
+        <button class="cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-medium text-slate-600 hover:bg-slate-100" onclick="setCategory('Spices & Masalas', this)">🌶️ Spices & Masalas</button>
+        <button class="cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-medium text-slate-600 hover:bg-slate-100" onclick="setCategory('Millet Snacks', this)">🌾 Millet Snacks</button>
+        <button class="cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-medium text-slate-600 hover:bg-slate-100" onclick="setCategory('Sweets & Namkeen', this)">🍩 Sweets & Namkeen</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Live Wholesale Banner / Flash Offers Ticker -->
+  <div class="bg-gradient-to-r from-amber-500 via-saffron to-amber-500 text-slate-900 text-xs font-bold shadow-sm">
+    <div class="mx-auto flex max-w-[1520px] items-center justify-between gap-4 px-4 py-2">
+      <div class="flex items-center gap-2 shrink-0">
+        <span class="rounded bg-slate-900 px-1.5 py-0.5 text-[10px] text-amber-300 font-extrabold uppercase tracking-wide">🔥 Live B2B Deal</span>
+      </div>
+      <div id="promoText" class="min-w-0 truncate text-center font-bold tracking-tight">
+        Special Irani Chai & Osmania Biscuit Combo Packs — Extra 10% wholesale discount on 20+ boxes!
+      </div>
+      <button onclick="openModal('offersModal')" class="shrink-0 underline decoration-slate-900 font-black hover:text-white transition">
+        View All 4 Deals →
+      </button>
+    </div>
+  </div>
+
+  <main class="mx-auto max-w-[1520px] px-3 py-4 md:px-4">
+    <!-- Visual Hero Section with Real Hyderabad Wholesale Imagery -->
+    <section class="grid gap-4 lg:grid-cols-[1.8fr_1fr_1fr]">
+      <!-- Main Hero Card with High-Res Photography -->
+      <div class="relative overflow-hidden rounded-2xl bg-slate-950 p-6 md:p-9 text-white shadow-card flex flex-col justify-between min-h-[340px]">
+        <img src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=80" 
+             alt="Hyderabad Charminar B2B Food Commerce" 
+             class="absolute inset-0 h-full w-full object-cover opacity-35 hover:scale-105 transition duration-700 pointer-events-none">
+        <div class="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/80 to-transparent"></div>
+
+        <div class="relative z-10">
+          <div class="mb-3 inline-flex items-center gap-2 rounded-full bg-white/15 px-3 py-1 text-xs font-extrabold backdrop-blur-sm border border-white/20">
+            <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+            HYDERABAD'S B2B WHOLESALE FOOD MARKET
+          </div>
+          <h1 class="max-w-xl text-3xl font-black leading-tight sm:text-4xl lg:text-5xl tracking-tight text-white">
+            Stock your shop. <br><span class="text-transparent bg-clip-text bg-gradient-to-r from-saffron to-amber-300">Serve your city.</span>
+          </h1>
+          <p class="mt-3 max-w-lg text-sm sm:text-base text-slate-300 font-medium">
+            Direct wholesale prices for Hyderabad cafes, bakeries, sweet shops, and grocers. Commercial raw materials, GST invoices, and same-day city dispatch.
+          </p>
+        </div>
+
+        <div class="relative z-10 mt-6 flex flex-wrap items-center gap-3">
+          <button onclick="document.getElementById('catalog').scrollIntoView({behavior:'smooth'})" 
+            class="rounded-xl bg-saffron px-6 py-3.5 text-sm font-black text-slate-950 shadow-lg hover:bg-saffron-dark hover:scale-105 active:scale-95 transition">
+            Shop Wholesale Deals →
+          </button>
+          <button onclick="toggleAiDrawer(true)" 
+            class="rounded-xl bg-white/15 backdrop-blur-md px-5 py-3.5 text-sm font-bold text-white hover:bg-white/25 border border-white/20 transition flex items-center gap-2">
+            <span>🤖</span>
+            <span>Ask AI Sourcing Advisor</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Feature Card 1: Irani Chai & Osmania Combo -->
+      <div class="relative overflow-hidden rounded-2xl bg-white p-5 shadow-card border border-slate-100 flex flex-col justify-between group">
+        <div class="h-32 w-full overflow-hidden rounded-xl bg-slate-100 mb-3 relative">
+          <img src="https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=80" 
+               alt="Irani Chai and Osmania Biscuits" 
+               class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+          <span class="absolute top-2 left-2 rounded-md bg-slate-900/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-bold text-amber-300">
+            Cafe Best Seller
+          </span>
+        </div>
+        <div>
+          <h2 class="text-lg font-black text-slate-900">Irani Chai & Biscuit Kit</h2>
+          <p class="mt-1 text-xs text-slate-500">Authentic Niloufer-style tea powder + 50 Osmania biscuits. Ready for 100+ tea servings.</p>
+        </div>
+        <div class="mt-4 flex items-center justify-between pt-3 border-t border-slate-100">
+          <span class="text-sm font-black text-slate-900">₹1,300 <span class="text-xs font-normal text-slate-400">/ combo</span></span>
+          <button onclick="addComboToCart('chai')" class="rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-bold text-brand hover:bg-brand hover:text-white transition">
+            + Add Combo
+          </button>
+        </div>
+      </div>
+
+      <!-- Quick Feature Card 2: Bakery Raw Materials -->
+      <div class="relative overflow-hidden rounded-2xl bg-white p-5 shadow-card border border-slate-100 flex flex-col justify-between group">
+        <div class="h-32 w-full overflow-hidden rounded-xl bg-slate-100 mb-3 relative">
+          <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" 
+               alt="Bakery Raw Materials" 
+               class="h-full w-full object-cover group-hover:scale-110 transition duration-500">
+          <span class="absolute top-2 left-2 rounded-md bg-emerald-700 text-white px-2 py-0.5 text-[10px] font-bold">
+            Bulk Tier Discount
+          </span>
+        </div>
+        <div>
+          <h2 class="text-lg font-black text-slate-900">Bakery Bulk Savings</h2>
+          <p class="mt-1 text-xs text-slate-500">Save up to ₹3,000 on 20+ sacks of maida, cocoa slab, and oils. Full 18% GST tax input credit.</p>
+        </div>
+        <div class="mt-4 flex items-center justify-between pt-3 border-t border-slate-100">
+          <span class="text-xs font-bold text-emerald-700">Tiers from ₹1,025</span>
+          <button onclick="setCategory('Bakery Raw Materials')" class="rounded-lg bg-blue-50 px-3 py-1.5 text-xs font-bold text-brand hover:bg-brand hover:text-white transition">
+            Browse Raw →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Trust Badges & City Delivery Status -->
+    <section class="mt-4 grid grid-cols-2 gap-2.5 rounded-2xl bg-white p-4 shadow-card border border-slate-100 sm:grid-cols-4">
+      <div class="flex items-center gap-3 border-r border-slate-100 px-2">
+        <div class="h-10 w-10 rounded-xl bg-blue-50 flex items-center justify-center text-xl text-brand shrink-0">🚛</div>
+        <div>
+          <b class="text-xs font-extrabold text-slate-900">Free Hyderabad Delivery</b>
+          <p class="text-[11px] text-slate-500">On ₹10,000+ orders across city</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 px-2 sm:border-r border-slate-100">
+        <div class="h-10 w-10 rounded-xl bg-emerald-50 flex items-center justify-center text-xl text-emerald-600 shrink-0">🧾</div>
+        <div>
+          <b class="text-xs font-extrabold text-slate-900">GST Input Tax Credit</b>
+          <p class="text-[11px] text-slate-500">Proper tax invoices with HSN codes</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 border-r border-slate-100 px-2">
+        <div class="h-10 w-10 rounded-xl bg-purple-50 flex items-center justify-center text-xl text-purple-600 shrink-0">🤖</div>
+        <div>
+          <b class="text-xs font-extrabold text-slate-900">AI Concierge & Margins</b>
+          <p class="text-[11px] text-slate-500">Calculate retail markup & bundles</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3 px-2">
+        <div class="h-10 w-10 rounded-xl bg-amber-50 flex items-center justify-center text-xl text-amber-600 shrink-0">⚡</div>
+        <div>
+          <b class="text-xs font-extrabold text-slate-900">Bahadurpura Hub</b>
+          <p class="text-[11px] text-slate-500">Dispatch in <span id="deliveryTimeEst" class="font-bold text-brand">3 to 4 hours</span></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- AI Curated Bundles Section -->
+    <section class="mt-6 rounded-2xl bg-gradient-to-br from-blue-900 via-indigo-950 to-slate-900 p-5 md:p-6 text-white shadow-card">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="rounded bg-saffron px-2 py-0.5 text-[10px] font-black text-slate-900 uppercase">AI Recommendation</span>
+            <h2 class="text-xl font-black">Pre-Engineered Wholesale Bundles</h2>
+          </div>
+          <p class="text-xs text-blue-200 mt-0.5">Optimized for high retail margins and balanced kitchen inventory.</p>
+        </div>
+        <button onclick="openModal('roiModal')" class="rounded-lg bg-white/10 hover:bg-white/20 border border-white/20 px-3 py-1.5 text-xs font-bold transition">
+          🧮 Estimate Bundle ROI →
+        </button>
+      </div>
+
+      <div class="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+        <!-- Bundle 1 -->
+        <div class="rounded-xl bg-white/10 backdrop-blur-md p-3.5 border border-white/15 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[11px] text-amber-300 font-bold mb-1">
+              <span>☕ CAFE ESSENTIAL</span>
+              <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-emerald-300">Save ₹120</span>
+            </div>
+            <h3 class="font-black text-sm">Irani Chai & Osmania Duo</h3>
+            <p class="text-[11px] text-slate-300 mt-1">1x 5kg Chai Powder + 2x 2.5kg Osmania Biscuits</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between pt-2 border-t border-white/10">
+            <div>
+              <span class="text-sm font-black text-white">₹1,700</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">₹1,820</span>
+            </div>
+            <button onclick="addBundleDirect(['HB002', 'HB001', 'HB001'])" class="rounded-lg bg-saffron px-3 py-1.5 text-xs font-extrabold text-slate-900 hover:bg-saffron-dark transition">
+              + 1-Click Add
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 2 -->
+        <div class="rounded-xl bg-white/10 backdrop-blur-md p-3.5 border border-white/15 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[11px] text-amber-300 font-bold mb-1">
+              <span>🥐 BAKERY STARTER</span>
+              <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-emerald-300">Save ₹350</span>
+            </div>
+            <h3 class="font-black text-sm">Cake & Pastry Bundle</h3>
+            <p class="text-[11px] text-slate-300 mt-1">1x Maida 25kg + 1x Cocoa Compound 5kg</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between pt-2 border-t border-white/10">
+            <div>
+              <span class="text-sm font-black text-white">₹2,480</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">₹2,830</span>
+            </div>
+            <button onclick="addBundleDirect(['HB003', 'HB008'])" class="rounded-lg bg-saffron px-3 py-1.5 text-xs font-extrabold text-slate-900 hover:bg-saffron-dark transition">
+              + 1-Click Add
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 3 -->
+        <div class="rounded-xl bg-white/10 backdrop-blur-md p-3.5 border border-white/15 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[11px] text-amber-300 font-bold mb-1">
+              <span>🌾 HEALTH FOCUS</span>
+              <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-emerald-300">Save ₹180</span>
+            </div>
+            <h3 class="font-black text-sm">Millet Snack Combo</h3>
+            <p class="text-[11px] text-slate-300 mt-1">1x Ragi Murukku (24pk) + 1x Jowar Bites (30pk)</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between pt-2 border-t border-white/10">
+            <div>
+              <span class="text-sm font-black text-white">₹1,340</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">₹1,520</span>
+            </div>
+            <button onclick="addBundleDirect(['HB004', 'HB012'])" class="rounded-lg bg-saffron px-3 py-1.5 text-xs font-extrabold text-slate-900 hover:bg-saffron-dark transition">
+              + 1-Click Add
+            </button>
+          </div>
+        </div>
+
+        <!-- Bundle 4 -->
+        <div class="rounded-xl bg-white/10 backdrop-blur-md p-3.5 border border-white/15 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between text-[11px] text-amber-300 font-bold mb-1">
+              <span>🌶️ COMMERCIAL SPICE</span>
+              <span class="rounded bg-emerald-500/20 px-1.5 py-0.5 text-emerald-300">Save ₹200</span>
+            </div>
+            <h3 class="font-black text-sm">Guntur Masala Station</h3>
+            <p class="text-[11px] text-slate-300 mt-1">1x Guntur Chilli 5kg + 1x Curry Masala Kit</p>
+          </div>
+          <div class="mt-3 flex items-center justify-between pt-2 border-t border-white/10">
+            <div>
+              <span class="text-sm font-black text-white">₹1,820</span>
+              <span class="text-[10px] text-slate-400 line-through ml-1">₹2,020</span>
+            </div>
+            <button onclick="addBundleDirect(['HB006', 'HB011'])" class="rounded-lg bg-saffron px-3 py-1.5 text-xs font-extrabold text-slate-900 hover:bg-saffron-dark transition">
+              + 1-Click Add
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Catalog Section -->
+    <section id="catalog" class="mt-7 grid gap-5 lg:grid-cols-[260px_1fr]">
+      <!-- Filters Sidebar -->
+      <aside class="h-fit rounded-2xl bg-white p-4 shadow-card border border-slate-100 sticky top-28">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-1.5">
+            <span class="text-base">⚙️</span>
+            <h2 class="font-black text-slate-900 text-sm">Filter Wholesale</h2>
+          </div>
+          <button onclick="resetFilters()" class="text-xs font-bold text-brand hover:underline">Clear all</button>
+        </div>
+
+        <div class="my-3 border-t border-slate-100"></div>
+
+        <!-- Category Radio List -->
+        <h3 class="mb-2.5 text-xs font-extrabold uppercase tracking-wider text-slate-400">Categories</h3>
+        <div id="categoryFilters" class="space-y-1.5 text-xs font-semibold text-slate-700"></div>
+
+        <div class="my-4 border-t border-slate-100"></div>
+
+        <!-- Maximum Price Slider -->
+        <div class="flex items-center justify-between text-xs font-bold">
+          <span class="uppercase tracking-wider text-slate-400 text-[11px]">Maximum price</span>
+          <span id="priceLabel" class="text-brand font-black">₹2,500</span>
+        </div>
+        <input id="priceRange" type="range" min="300" max="3000" step="100" value="2500" class="mt-2 w-full cursor-pointer" oninput="updatePrice(this.value)">
+        <div class="flex justify-between text-[10px] text-slate-400 font-medium mt-1">
+          <span>₹300</span>
+          <span>₹3,000+</span>
+        </div>
+
+        <div class="my-4 border-t border-slate-100"></div>
+
+        <!-- Checkbox Options -->
+        <div class="space-y-2.5 text-xs font-semibold text-slate-700">
+          <label class="flex cursor-pointer items-center justify-between">
+            <span class="flex items-center gap-1.5">
+              <span>🧾</span>
+              <span>GST invoice eligible</span>
+            </span>
+            <input id="gstOnly" type="checkbox" class="h-4 w-4 rounded text-brand focus:ring-brand" onchange="renderProducts()">
+          </label>
+          <label class="flex cursor-pointer items-center justify-between">
+            <span class="flex items-center gap-1.5">
+              <span>📦</span>
+              <span>In stock ready to ship</span>
+            </span>
+            <input id="stockOnly" type="checkbox" class="h-4 w-4 rounded text-brand focus:ring-brand" onchange="renderProducts()">
+          </label>
+          <label class="flex cursor-pointer items-center justify-between">
+            <span class="flex items-center gap-1.5">
+              <span>⭐</span>
+              <span>Top rated (4.7+)</span>
+            </span>
+            <input id="topRatedOnly" type="checkbox" class="h-4 w-4 rounded text-brand focus:ring-brand" onchange="renderProducts()">
+          </label>
+        </div>
+
+        <div class="my-4 border-t border-slate-100"></div>
+
+        <!-- Custom Order Box -->
+        <div class="rounded-xl bg-gradient-to-br from-blue-50 to-indigo-50 p-3.5 text-xs text-blue-900 border border-blue-100">
+          <b class="font-extrabold flex items-center gap-1 text-slate-900">
+            <span>📦</span> Large Orders (50+ boxes)?
+          </b>
+          <p class="mt-1 text-[11px] text-slate-600">Our wholesale team provides factory-direct freight rates and custom credit terms.</p>
+          <a href="tel:+914040001234" class="mt-2.5 inline-block font-extrabold text-brand hover:underline">
+            ☎ Call +91 40 4000 1234
+          </a>
+        </div>
+      </aside>
+
+      <!-- Products Grid & Toolbar -->
+      <div>
+        <div class="mb-3.5 flex flex-wrap items-center justify-between gap-2 bg-white p-3.5 rounded-2xl shadow-card border border-slate-100">
+          <div>
+            <h2 class="text-lg font-black text-slate-900">Commercial Catalog for Hyderabad</h2>
+            <p id="resultCount" class="text-xs text-slate-500 font-medium"></p>
+          </div>
+          <div class="flex items-center gap-2">
+            <label class="text-xs text-slate-400 font-bold">Sort by:</label>
+            <select id="sortSelect" onchange="renderProducts()" class="rounded-xl border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-bold text-slate-800 outline-none focus:border-brand cursor-pointer">
+              <option value="popular">Most Popular</option>
+              <option value="low">Price: Low to High</option>
+              <option value="high">Price: High to Low</option>
+              <option value="rating">Highest Rated</option>
+              <option value="margin">Highest Retail Margin</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Active Filter Tags -->
+        <div id="activeFilters" class="mb-3 flex flex-wrap gap-2"></div>
+
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 gap-3.5 sm:grid-cols-2 xl:grid-cols-3"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modern B2B Footer -->
+  <footer class="mt-12 bg-slate-950 px-4 py-12 text-white border-t border-slate-800">
+    <div class="mx-auto grid max-w-[1520px] gap-8 text-sm md:grid-cols-4">
+      <div>
+        <div class="flex items-center gap-2">
+          <div class="h-8 w-8 rounded-lg bg-brand flex items-center justify-center text-white font-black text-lg">H</div>
+          <div class="text-xl font-black">hyderabiz<span class="text-saffron">.</span></div>
+        </div>
+        <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+          The verified B2B wholesale platform for Hyderabad's food businesses, bakeries, cafes, and restaurants. Dispatches daily from Bahadurpura central warehouse.
+        </p>
+        <div class="mt-4 flex items-center gap-2 text-xs text-emerald-400 font-bold">
+          <span>●</span> Verified FSSAI Wholesale Distributor
+        </div>
+      </div>
+      <div>
+        <b class="text-xs uppercase tracking-wider text-slate-300 font-extrabold">Business Sourcing</b>
+        <ul class="mt-3 space-y-1.5 text-xs text-slate-400">
+          <li><button onclick="setCategory('Bakery Raw Materials')" class="hover:text-white transition">Bakery Raw Materials</button></li>
+          <li><button onclick="setCategory('Osmania & Toast')" class="hover:text-white transition">Osmania Biscuits & Toast</button></li>
+          <li><button onclick="setCategory('Beverages & Milk')" class="hover:text-white transition">Irani Chai Commercial Packs</button></li>
+          <li><button onclick="setCategory('Spices & Masalas')" class="hover:text-white transition">Guntur Spices & Masala Kits</button></li>
+          <li><button onclick="setCategory('Millet Snacks')" class="hover:text-white transition">Healthy Roasted Millet Snacks</button></li>
+        </ul>
+      </div>
+      <div>
+        <b class="text-xs uppercase tracking-wider text-slate-300 font-extrabold">Delivery & Coverage</b>
+        <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+          Dispatches from: Bahadurpura Industrial Estate, Hyderabad.<br><br>
+          <b>Zones covered:</b> Banjara Hills, Jubilee Hills, Secunderabad, Abids, Charminar, Tolichowki, Kukatpally, Madhapur, Hitec City.
+        </p>
+      </div>
+      <div>
+        <b class="text-xs uppercase tracking-wider text-slate-300 font-extrabold">Vendor Wholesale Desk</b>
+        <p class="mt-3 text-xs text-slate-400 leading-relaxed">
+          ☎ +91 40 4000 1234<br>
+          ✉ wholesale@hyderabiz.in<br>
+          Mon–Sat: 8:00 AM – 8:00 PM IST
+        </p>
+        <button onclick="toggleAiDrawer(true)" class="mt-3 inline-flex items-center gap-1.5 rounded-lg bg-white/10 px-3 py-1.5 text-xs font-bold text-saffron hover:bg-white/20 transition">
+          <span>🤖</span> Launch AI Concierge
+        </button>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- MODALS & DRAWERS SECTION -->
+  <!-- ============================================================ -->
+
+  <!-- 1. FLOATING AI ASSISTANT CONCIERGE BUTTON & DRAWER -->
+  <button id="floatingAiBtn" onclick="toggleAiDrawer(true)" class="fixed bottom-6 right-6 z-40 flex items-center gap-2.5 rounded-full bg-gradient-to-r from-blue-600 via-brand to-indigo-600 p-3 sm:px-5 sm:py-3.5 text-white shadow-pop hover:scale-105 active:scale-95 transition group">
+    <div class="relative">
+      <span class="text-xl">🤖</span>
+      <span class="absolute -top-1 -right-1 h-3 w-3 rounded-full bg-emerald-400 border-2 border-brand"></span>
+    </div>
+    <div class="hidden sm:block text-left leading-tight">
+      <div class="text-xs font-black tracking-wide">Hyderabiz AI</div>
+      <div class="text-[10px] text-blue-200">B2B Concierge</div>
+    </div>
+  </button>
+
+  <!-- AI Concierge Sliding Drawer -->
+  <div id="aiBackdrop" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm" onclick="toggleAiDrawer(false)"></div>
+  <aside id="aiDrawer" class="drawer fixed right-0 top-0 z-50 flex h-full w-full max-w-lg translate-x-full flex-col bg-white shadow-2xl">
+    <!-- AI Drawer Header -->
+    <div class="flex items-center justify-between bg-gradient-to-r from-slate-900 to-brand-dark p-4 text-white">
+      <div class="flex items-center gap-3">
+        <div class="h-10 w-10 rounded-xl bg-white/10 flex items-center justify-center text-2xl border border-white/20">🤖</div>
+        <div>
+          <h2 class="font-black text-sm flex items-center gap-2">
+            Hyderabiz AI Concierge
+            <span class="rounded bg-emerald-400/20 px-1.5 py-0.5 text-[10px] font-bold text-emerald-300">Online</span>
+          </h2>
+          <p class="text-[11px] text-blue-200">Wholesale pricing, inventory planning & margin intelligence</p>
+        </div>
+      </div>
+      <button onclick="toggleAiDrawer(false)" class="h-8 w-8 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center text-xl font-bold transition">×</button>
+    </div>
+
+    <!-- AI Settings / API Key Expander -->
+    <div class="border-b border-slate-100 bg-slate-50 px-4 py-2 text-xs flex items-center justify-between">
+      <span class="text-slate-500 font-medium">Engine: <b id="aiEngineLabel" class="text-slate-800">Autonomous B2B Model</b></span>
+      <button onclick="toggleApiKeyInput()" class="text-[11px] font-bold text-brand hover:underline">⚙️ Config Key</button>
+    </div>
+    <div id="apiKeyBar" class="hidden border-b border-slate-200 bg-blue-50/50 p-3 text-xs">
+      <label class="block font-bold text-slate-700 mb-1">Google Gemini API Key (Optional):</label>
+      <div class="flex gap-2">
+        <input id="geminiApiKey" type="password" placeholder="AIzaSy... (leave blank for built-in AI)" class="flex-1 rounded-lg border border-slate-300 bg-white px-2.5 py-1.5 text-xs outline-none">
+        <button onclick="saveApiKey()" class="rounded-lg bg-brand px-3 py-1.5 font-bold text-white text-xs">Save</button>
+      </div>
+      <p class="mt-1 text-[10px] text-slate-500">Without an API key, our autonomous domain engine answers with exact prices and inventory.</p>
+    </div>
+
+    <!-- Chat Messages Scrollable Area -->
+    <div id="aiChatMessages" class="flex-1 overflow-y-auto p-4 space-y-3.5 bg-slate-50/50 text-xs">
+      <!-- Initial AI Message -->
+      <div class="flex items-start gap-2.5">
+        <div class="h-8 w-8 rounded-lg bg-brand text-white flex items-center justify-center text-sm font-bold shrink-0">🤖</div>
+        <div class="max-w-[85%] rounded-2xl rounded-tl-none bg-white p-3.5 shadow-sm border border-slate-200/80 text-slate-800 leading-relaxed">
+          <p class="font-bold text-slate-900 mb-1">Salam! I'm your Hyderabiz Sourcing Concierge.</p>
+          <p>I can help you build custom restaurant or cafe orders, calculate retail profit margins, recommend high-yield raw materials, or synthesize buyer feedback.</p>
+          <div class="mt-2.5 pt-2 border-t border-slate-100 font-semibold text-slate-500 text-[11px]">
+            Try asking one of these:
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Prompt Suggestions Chips -->
+    <div class="p-2.5 bg-white border-t border-slate-200/70 overflow-x-auto hide-scrollbar flex gap-1.5">
+      <button onclick="sendQuickPrompt('Suggest a starter inventory for a new Irani cafe under ₹10,000')" class="whitespace-nowrap rounded-full bg-slate-100 hover:bg-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700 transition">
+        ☕ Irani Cafe Order (₹10k)
+      </button>
+      <button onclick="sendQuickPrompt('What are the highest profit margin products to resell?')" class="whitespace-nowrap rounded-full bg-slate-100 hover:bg-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700 transition">
+        💰 Highest Resale Margins
+      </button>
+      <button onclick="sendQuickPrompt('Recommend bakery raw materials for cakes and butter cookies')" class="whitespace-nowrap rounded-full bg-slate-100 hover:bg-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700 transition">
+        🥐 Bakery Materials
+      </button>
+      <button onclick="sendQuickPrompt('Show me healthy roasted millet snacks for retail racks')" class="whitespace-nowrap rounded-full bg-slate-100 hover:bg-slate-200 px-3 py-1 text-[11px] font-semibold text-slate-700 transition">
+        🌾 Millet Snacks
+      </button>
+    </div>
+
+    <!-- Chat Input Form -->
+    <form id="aiChatForm" onsubmit="handleAiSubmit(event)" class="p-3 bg-white border-t border-slate-200 flex gap-2">
+      <input id="aiChatInput" type="text" placeholder="Ask about wholesale prices, combos, margins..." 
+        class="flex-1 rounded-xl border border-slate-200 bg-slate-50 px-3.5 py-2.5 text-xs text-slate-900 outline-none focus:bg-white focus:border-brand transition">
+      <button type="submit" class="rounded-xl bg-brand hover:bg-brand-dark px-4 py-2.5 text-xs font-black text-white transition shadow-sm">
+        Send
+      </button>
+    </form>
+  </aside>
+
+  <!-- 2. CART DRAWER -->
+  <div id="cartBackdrop" class="fixed inset-0 z-50 hidden bg-slate-950/60 backdrop-blur-sm" onclick="closeCart()"></div>
+  <aside id="cartDrawer" class="drawer fixed right-0 top-0 z-50 flex h-full w-full max-w-md translate-x-full flex-col bg-white shadow-2xl">
+    <div class="flex items-center justify-between bg-slate-900 px-5 py-4 text-white">
+      <div>
+        <h2 class="font-black text-base">Your Wholesale Cart</h2>
+        <p id="cartSubtitle" class="text-xs text-slate-400">0 items</p>
+      </div>
+      <button onclick="closeCart()" class="text-2xl text-slate-400 hover:text-white transition">×</button>
+    </div>
+
+    <!-- Free Delivery Progress Bar -->
+    <div id="freeShippingBanner" class="bg-blue-50 px-4 py-2.5 border-b border-blue-100 text-xs">
+      <div class="flex justify-between font-bold text-slate-700 mb-1">
+        <span id="freeShippingText">Add ₹10,000 for FREE delivery</span>
+        <span id="freeShippingPercent" class="text-brand font-black">0%</span>
+      </div>
+      <div class="w-full h-1.5 rounded-full bg-blue-200 overflow-hidden">
+        <div id="freeShippingBar" class="h-full bg-brand rounded-full transition-all duration-300" style="width: 0%"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items Scroll -->
+    <div id="cartItems" class="flex-1 overflow-y-auto p-4 space-y-3"></div>
+
+    <!-- Cart Summary & Actions -->
+    <div class="border-t bg-slate-50 p-4 space-y-2.5">
+      <!-- Promo code input -->
+      <div class="flex gap-2">
+        <input id="couponCode" type="text" placeholder="Coupon (e.g. WELCOME10)" class="flex-1 rounded-lg border border-slate-200 px-3 py-1.5 text-xs uppercase font-bold outline-none">
+        <button onclick="applyCoupon()" class="rounded-lg bg-slate-800 px-3 py-1.5 text-xs font-bold text-white hover:bg-slate-700">Apply</button>
+      </div>
+      <div id="couponNote" class="text-[11px] font-semibold text-emerald-600 hidden"></div>
+
+      <div class="flex justify-between text-xs text-slate-600">
+        <span>Base Total</span>
+        <b id="cartSubtotal">₹0</b>
+      </div>
+      <div class="flex justify-between text-xs text-emerald-700">
+        <span>Bulk Tier Discount</span>
+        <b id="cartDiscount">- ₹0</b>
+      </div>
+      <div class="flex justify-between text-xs text-slate-600">
+        <span>Estimated GST (18%)</span>
+        <b id="cartGst">₹0</b>
+      </div>
+      <div class="flex justify-between text-base font-black text-slate-900 border-t pt-2">
+        <span>Final Total</span>
+        <b id="cartTotal">₹0</b>
+      </div>
+
+      <div id="minOrderNote" class="rounded-lg bg-amber-50 p-2 text-xs font-semibold text-amber-800 border border-amber-200"></div>
+
+      <button id="checkoutBtn" onclick="openCheckout()" class="w-full rounded-xl py-3.5 text-sm font-black transition shadow-md">
+        Proceed to B2B Checkout →
+      </button>
+    </div>
+  </aside>
+
+  <!-- 3. PRODUCT DETAIL & AI REVIEWS MODAL -->
+  <div id="detailModal" class="modal fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-3 hidden">
+    <div class="max-h-[92vh] w-full max-w-3xl overflow-y-auto rounded-2xl bg-white shadow-2xl">
+      <div class="sticky top-0 z-10 flex items-center justify-between bg-slate-900 px-5 py-3.5 text-white">
+        <h2 id="modalProductTitle" class="font-black text-sm truncate">Product Details</h2>
+        <button onclick="closeModal('detailModal')" class="text-2xl text-slate-400 hover:text-white">×</button>
+      </div>
+
+      <div class="p-5 space-y-6">
+        <!-- Top Half: Image Gallery & Specs -->
+        <div class="grid gap-6 md:grid-cols-2">
+          <div>
+            <div class="h-64 w-full overflow-hidden rounded-2xl bg-slate-100 border border-slate-200">
+              <img id="modalMainImg" src="" alt="" class="h-full w-full object-cover">
+            </div>
+            <!-- Secondary Gallery Thumbnails -->
+            <div id="modalThumbnails" class="mt-2.5 flex gap-2"></div>
+          </div>
+
+          <div class="space-y-3">
+            <div class="flex items-center gap-2">
+              <span id="modalCategory" class="rounded bg-blue-50 px-2 py-0.5 text-xs font-bold text-brand"></span>
+              <span id="modalRating" class="text-xs font-bold text-slate-600"></span>
+            </div>
+            <h3 id="modalName" class="text-xl font-black text-slate-900 leading-tight"></h3>
+            <p id="modalPack" class="text-xs text-slate-500 font-semibold"></p>
+
+            <div class="rounded-xl bg-slate-50 p-3 border border-slate-200 space-y-1.5">
+              <div class="flex items-baseline justify-between">
+                <span class="text-xs text-slate-500">Unit Wholesale:</span>
+                <span id="modalPrice" class="text-2xl font-black text-slate-900"></span>
+              </div>
+              <div id="modalTiers" class="text-xs text-amber-900 font-bold bg-amber-50 rounded-lg p-2 border border-amber-200"></div>
+            </div>
+
+            <p id="modalDesc" class="text-xs text-slate-600 leading-relaxed"></p>
+
+            <!-- Quantity Stepper & Add -->
+            <div class="pt-2 flex items-center gap-3">
+              <div class="flex items-center rounded-xl border border-slate-300 bg-white">
+                <button onclick="stepModalQty(-1)" class="px-3 py-2 text-sm font-bold hover:bg-slate-100">−</button>
+                <input id="modalQty" type="number" min="1" value="1" class="w-12 text-center text-xs font-bold outline-none">
+                <button onclick="stepModalQty(1)" class="px-3 py-2 text-sm font-bold hover:bg-slate-100">+</button>
+              </div>
+              <button id="modalAddBtn" onclick="addModalItemToCart()" class="flex-1 rounded-xl bg-saffron py-2.5 text-xs font-black text-slate-900 hover:bg-saffron-dark transition shadow-sm">
+                Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Sentiment Synthesis & Kitchen Insights -->
+        <div class="rounded-2xl bg-gradient-to-br from-slate-900 to-indigo-950 p-5 text-white">
+          <div class="flex items-center justify-between mb-3">
+            <div class="flex items-center gap-2">
+              <span class="text-lg">🤖</span>
+              <h4 class="font-black text-sm">AI Customer Intelligence & Chef Review Synthesis</h4>
+            </div>
+            <span class="rounded bg-emerald-400/20 px-2 py-0.5 text-[10px] font-extrabold text-emerald-300">98% Positive Rating</span>
+          </div>
+          <div class="grid gap-3 sm:grid-cols-2 text-xs">
+            <div class="rounded-xl bg-white/10 p-3 border border-white/15">
+              <b class="text-emerald-300 font-black flex items-center gap-1">✓ Top Recurring Praises:</b>
+              <p id="modalPros" class="mt-1 text-slate-200 leading-relaxed"></p>
+            </div>
+            <div class="rounded-xl bg-white/10 p-3 border border-white/15">
+              <b class="text-amber-300 font-black flex items-center gap-1">⚠ Kitchen & Shelf Life Advice:</b>
+              <p id="modalCons" class="mt-1 text-slate-200 leading-relaxed"></p>
+            </div>
+          </div>
+          <div class="mt-3 rounded-xl bg-blue-500/20 p-3 border border-blue-400/30 text-xs">
+            <b class="text-blue-200 font-black">💡 Reseller Margin Strategy:</b>
+            <p id="modalMarginAdvice" class="mt-0.5 text-slate-200"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. AI PROFIT MARGIN & ROI CALCULATOR MODAL -->
+  <div id="roiModal" class="modal fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-3 hidden">
+    <div class="w-full max-w-xl rounded-2xl bg-white shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between bg-slate-900 px-5 py-4 text-white">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">🧮</span>
+          <h2 class="font-black text-sm">AI Profit Margin & Reseller ROI Calculator</h2>
+        </div>
+        <button onclick="closeModal('roiModal')" class="text-2xl text-slate-400 hover:text-white">×</button>
+      </div>
+
+      <div class="p-5 space-y-4 text-xs">
+        <div>
+          <label class="block font-bold text-slate-700 mb-1">Select Wholesale Product:</label>
+          <select id="roiProduct" onchange="calculateRoi()" class="w-full rounded-xl border border-slate-300 p-2.5 font-semibold text-slate-900 outline-none"></select>
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Order Quantity (Packs):</label>
+            <input id="roiQty" type="number" min="1" max="500" value="20" oninput="calculateRoi()" class="w-full rounded-xl border border-slate-300 p-2.5 font-bold outline-none">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Your Retail Selling Price (₹/pack):</label>
+            <input id="roiRetailPrice" type="number" step="10" value="650" oninput="calculateRoi()" class="w-full rounded-xl border border-slate-300 p-2.5 font-bold outline-none">
+          </div>
+        </div>
+
+        <!-- Output Cards -->
+        <div class="grid grid-cols-2 gap-2.5 pt-2">
+          <div class="rounded-xl bg-slate-50 p-3 border border-slate-200">
+            <span class="text-slate-500 font-semibold text-[11px]">Wholesale Cost:</span>
+            <div id="roiWholesaleCost" class="text-lg font-black text-slate-900">₹0</div>
+            <span id="roiTierApplied" class="text-[10px] text-brand font-bold"></span>
+          </div>
+          <div class="rounded-xl bg-blue-50 p-3 border border-blue-200">
+            <span class="text-blue-700 font-semibold text-[11px]">Gross Retail Revenue:</span>
+            <div id="roiRetailRevenue" class="text-lg font-black text-blue-900">₹0</div>
+            <span class="text-[10px] text-blue-600">at your price</span>
+          </div>
+          <div class="rounded-xl bg-emerald-50 p-3 border border-emerald-200">
+            <span class="text-emerald-700 font-semibold text-[11px]">Net Business Profit:</span>
+            <div id="roiNetProfit" class="text-xl font-black text-emerald-800">₹0</div>
+            <span id="roiMarginPercent" class="text-[11px] font-extrabold text-emerald-600">0% Margin</span>
+          </div>
+          <div class="rounded-xl bg-purple-50 p-3 border border-purple-200">
+            <span class="text-purple-700 font-semibold text-[11px]">GST Input Tax Credit (ITC):</span>
+            <div id="roiGstItc" class="text-lg font-black text-purple-900">₹0</div>
+            <span class="text-[10px] text-purple-600">Claimable back in taxes</span>
+          </div>
+        </div>
+
+        <button onclick="addRoiOrderToCart()" class="w-full rounded-xl bg-brand py-3 font-black text-white hover:bg-brand-dark transition shadow-md">
+          + Add This Order to Cart
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5. PRODUCT COMPARISON MODAL -->
+  <div id="compareModal" class="modal fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-3 hidden">
+    <div class="max-h-[92vh] w-full max-w-4xl overflow-y-auto rounded-2xl bg-white shadow-2xl">
+      <div class="flex items-center justify-between bg-slate-900 px-5 py-4 text-white">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">⚖️</span>
+          <h2 class="font-black text-sm">Wholesale Comparison Matrix</h2>
+        </div>
+        <button onclick="closeModal('compareModal')" class="text-2xl text-slate-400 hover:text-white">×</button>
+      </div>
+      <div id="compareContent" class="p-5 overflow-x-auto text-xs"></div>
+    </div>
+  </div>
+
+  <!-- 6. B2B CHECKOUT MODAL -->
+  <div id="checkoutModal" class="modal fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-3 hidden">
+    <div class="max-h-[94vh] w-full max-w-2xl overflow-y-auto rounded-2xl bg-white shadow-2xl">
+      <div class="flex items-center justify-between bg-brand px-5 py-4 text-white">
+        <div>
+          <h2 class="font-black text-base">B2B Checkout & GST Tax Invoice</h2>
+          <p class="text-xs text-blue-100">Dispatches from Bahadurpura central warehouse</p>
+        </div>
+        <button onclick="closeModal('checkoutModal')" class="text-2xl text-white">×</button>
+      </div>
+
+      <form id="checkoutForm" class="space-y-4 p-5 text-xs">
+        <div class="rounded-xl bg-blue-50 p-3 text-blue-900 border border-blue-200">
+          📍 Delivering to <b id="checkoutLocation" class="font-black">Banjara Hills, Hyderabad</b> · Same-day delivery route
+        </div>
+
+        <div class="grid gap-3 sm:grid-cols-2">
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Business / Shop Name *</label>
+            <input name="business" required placeholder="e.g. Sunrise Bakers & Cafe" class="w-full rounded-xl border border-slate-300 p-2.5 font-normal outline-none focus:border-brand">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Owner / Manager Name *</label>
+            <input name="owner" required placeholder="Your full name" class="w-full rounded-xl border border-slate-300 p-2.5 font-normal outline-none focus:border-brand">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">10-Digit Phone Number *</label>
+            <input name="phone" required pattern="[0-9]{10}" placeholder="9876543210" class="w-full rounded-xl border border-slate-300 p-2.5 font-normal outline-none focus:border-brand">
+          </div>
+          <div>
+            <label class="block font-bold text-slate-700 mb-1">Hyderabad Delivery Area *</label>
+            <select name="area" class="w-full rounded-xl border border-slate-300 p-2.5 font-semibold outline-none focus:border-brand">
+              <option>Banjara Hills</option>
+              <option>Abids & Old City</option>
+              <option>Secunderabad</option>
+              <option>Mehdipatnam</option>
+              <option>Charminar</option>
+              <option>Kukatpally</option>
+              <option>Hitec City</option>
+              <option>Jubilee Hills</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <label class="flex items-center justify-between font-bold text-slate-700 mb-1">
+            <span>GSTIN Number (for 18% Input Tax Credit)</span>
+            <span class="flex items-center gap-1.5 font-normal text-slate-500">
+              Need GST invoice? <input id="gstToggle" type="checkbox" onchange="toggleGst()" checked class="h-4 w-4">
+            </span>
+          </label>
+          <input id="gstin" name="gstin" required pattern="[0-9A-Z]{15}" placeholder="36ABCDE1234F1Z5" class="w-full rounded-xl border border-slate-300 p-2.5 uppercase font-bold outline-none focus:border-brand">
+        </div>
+
+        <div>
+          <p class="font-bold text-slate-700 mb-2">Payment Terms</p>
+          <div class="grid gap-2 sm:grid-cols-3">
+            <label class="cursor-pointer rounded-xl border border-slate-200 p-3 text-xs has-[:checked]:border-brand has-[:checked]:bg-blue-50/70 transition">
+              <input type="radio" name="payment" value="UPI" checked class="text-brand">
+              <b class="block mt-1">UPI Direct</b>
+              <span class="text-slate-500 text-[11px]">GPay / PhonePe / QR</span>
+            </label>
+            <label class="cursor-pointer rounded-xl border border-slate-200 p-3 text-xs has-[:checked]:border-brand has-[:checked]:bg-blue-50/70 transition">
+              <input type="radio" name="payment" value="Net Banking" class="text-brand">
+              <b class="block mt-1">Net Banking</b>
+              <span class="text-slate-500 text-[11px]">HDFC / ICICI Business</span>
+            </label>
+            <label class="cursor-pointer rounded-xl border border-slate-200 p-3 text-xs has-[:checked]:border-brand has-[:checked]:bg-blue-50/70 transition">
+              <input type="radio" name="payment" value="COD" class="text-brand">
+              <b class="block mt-1">Wholesale COD</b>
+              <span class="text-slate-500 text-[11px]">Pay upon unloading</span>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="w-full rounded-xl bg-brand py-3.5 font-black text-white hover:bg-brand-dark transition shadow-md text-sm">
+          Confirm Wholesale Order →
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- 7. ORDER SUCCESS & PRINTABLE TAX INVOICE -->
+  <div id="successModal" class="modal fixed inset-0 z-[70] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-3 hidden">
+    <div class="w-full max-w-xl rounded-2xl bg-white shadow-2xl overflow-hidden">
+      <div class="bg-emerald-600 p-6 text-center text-white">
+        <div class="h-14 w-14 rounded-full bg-white/20 flex items-center justify-center mx-auto text-3xl font-black mb-2">✓</div>
+        <h2 class="text-2xl font-black">Wholesale Order Confirmed!</h2>
+        <p id="successMessage" class="mt-1 text-xs text-emerald-100 font-semibold"></p>
+      </div>
+
+      <div id="invoicePreview" class="p-5 text-xs max-h-[60vh] overflow-y-auto"></div>
+
+      <div class="flex gap-2 border-t p-4 bg-slate-50 text-xs">
+        <button onclick="printInvoice()" class="flex-1 rounded-xl border border-slate-300 py-2.5 font-bold hover:bg-white transition flex items-center justify-center gap-1.5">
+          <span>🖨️</span> Print / Save Invoice
+        </button>
+        <button onclick="closeModal('successModal'); closeCart()" class="flex-1 rounded-xl bg-brand py-2.5 font-bold text-white hover:bg-brand-dark transition">
+          Back to Store
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 8. ORDERS DASHBOARD & LIVE TRACKER -->
+  <div id="dashboardModal" class="modal fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-3 hidden">
+    <div class="w-full max-w-2xl rounded-2xl bg-white shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between bg-slate-900 px-5 py-4 text-white">
+        <div class="flex items-center gap-2">
+          <span class="text-lg">📦</span>
+          <h2 class="font-black text-sm">Shop Owner Order History & Live Dispatch</h2>
+        </div>
+        <button onclick="closeModal('dashboardModal')" class="text-2xl text-slate-400 hover:text-white">×</button>
+      </div>
+      <div id="ordersList" class="max-h-[70vh] overflow-y-auto p-5 text-xs space-y-3"></div>
+    </div>
+  </div>
+
+  <!-- 9. OFFERS MODAL -->
+  <div id="offersModal" class="modal fixed inset-0 z-[60] flex items-center justify-center bg-slate-950/70 backdrop-blur-sm p-3 hidden">
+    <div class="w-full max-w-lg rounded-2xl bg-white p-6 shadow-2xl">
+      <div class="flex justify-between items-center">
+        <h2 class="text-lg font-black text-slate-900 flex items-center gap-2">
+          <span>🔥</span> Today's Wholesale Promotions
+        </h2>
+        <button onclick="closeModal('offersModal')" class="text-2xl text-slate-400 hover:text-slate-800">×</button>
+      </div>
+      <div class="mt-4 space-y-3 text-xs">
+        <div class="rounded-xl bg-amber-50 p-3.5 border border-amber-200">
+          <b class="text-amber-900 font-black">☕ Irani Chai + Osmania Biscuit Combo</b>
+          <p class="mt-1 text-slate-600">Extra 10% off when ordering 20+ boxes. Free delivery within Hyderabad central zones.</p>
+        </div>
+        <div class="rounded-xl bg-blue-50 p-3.5 border border-blue-200">
+          <b class="text-blue-900 font-black">🥐 Bakery Volume Savings</b>
+          <p class="mt-1 text-slate-600">Order 5+ sacks of Mysore Maida (25kg) and get Cocoa Compound slabs at flat ₹1,440.</p>
+        </div>
+        <div class="rounded-xl bg-emerald-50 p-3.5 border border-emerald-200">
+          <b class="text-emerald-900 font-black">🌾 Healthy Millet First Order Bonus</b>
+          <p class="mt-1 text-slate-600">Use coupon code <code class="font-bold text-emerald-800">WELCOME10</code> for 10% instant off on all millet snack boxes.</p>
+        </div>
+        <div class="rounded-xl bg-purple-50 p-3.5 border border-purple-200">
+          <b class="text-purple-900 font-black">🚛 Free Delivery Guarantee</b>
+          <p class="mt-1 text-slate-600">Orders above ₹10,000 qualify for free express delivery from Bahadurpura hub.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Root -->
+  <div id="toastRoot" class="fixed bottom-6 left-1/2 z-[100] -translate-x-1/2 pointer-events-none"></div>
+
+  <!-- ============================================================ -->
+  <!-- JAVASCRIPT: DATA, AI CONCIERGE, CART, AND INTERACTIVITY -->
+  <!-- ============================================================ -->
+  <script>
+    // Complete Wholesale Catalog with Authentic High-Definition Images & Specs
+    const products = [
+      {
+        id: "HB001",
+        name: "Premium Osmania Biscuits",
+        cat: "Osmania & Toast",
+        pack: "Box of 50 pcs · 2.5 kg",
+        weight: "2.5 kg",
+        price: 520,
+        tiers: [[5, 480], [20, 425]],
+        rating: 4.8,
+        reviews: 342,
+        tags: "osmania biscuit chai bakery tea salt sweet",
+        image: "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "1905",
+        stock: 86,
+        suggestedRetail: 650,
+        desc: "Classic golden baked Hyderabadi Osmania biscuits with signature sweet-and-salt balance. Flaky texture that softens perfectly when dipped into hot Irani chai.",
+        aiPros: "Stays ultra-crisp for 45+ days in air-tight tins; unmatched customer loyalty in cafes.",
+        aiCons: "Fragile edges; handle master cartons with care during unloading.",
+        aiMargin: "Retail cafes sell 2 biscuits for ₹25. Pack yields ~₹625 retail revenue with over 35% margin."
+      },
+      {
+        id: "HB002",
+        name: "Hyderabad Irani Chai Powder",
+        cat: "Beverages & Milk",
+        pack: "5 kg Food-Service Pack",
+        weight: "5.0 kg",
+        price: 780,
+        tiers: [[5, 725], [20, 680]],
+        rating: 4.7,
+        reviews: 218,
+        tags: "chai tea irani cafe beverage milk brew",
+        image: "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "0902",
+        stock: 42,
+        suggestedRetail: 1100,
+        desc: "High-grade Assam CTC tea blended specially for slow-decoction Irani dum chai. Delivers a deep ruby liquor that binds rich boiled condensed milk.",
+        aiPros: "Produces up to 400 commercial tea cups per 5kg pack; rich lingering aroma.",
+        aiCons: "Requires authentic slow-steam decoction method for best taste.",
+        aiMargin: "Yields 400 cups sold at ₹15-20 each, giving over ₹6,000 gross revenue per pack!"
+      },
+      {
+        id: "HB003",
+        name: "Mysore Bakery Maida",
+        cat: "Bakery Raw Materials",
+        pack: "25 kg Commercial Sack",
+        weight: "25.0 kg",
+        price: 1180,
+        tiers: [[5, 1100], [20, 1025]],
+        rating: 4.6,
+        reviews: 187,
+        tags: "maida flour baking raw material cake bread",
+        image: "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "1101",
+        stock: 31,
+        suggestedRetail: 1450,
+        desc: "Super-fine commercial wheat flour with 11.5% gluten content. Perfect for flaky puff pastries, sandwich breads, pizza bases, and Osmania cookies.",
+        aiPros: "Consistent rising power and high water absorption; zero unbleached lumps.",
+        aiCons: "Heavy sack; store elevated on wooden pallets away from ground moisture.",
+        aiMargin: "Fundamental base for high-profit bakery items with 4x value-addition."
+      },
+      {
+        id: "HB004",
+        name: "Roasted Ragi Millet Murukku",
+        cat: "Millet Snacks",
+        pack: "Box of 24 packs · 1.2 kg",
+        weight: "1.2 kg",
+        price: 680,
+        tiers: [[5, 625], [20, 570]],
+        rating: 4.7,
+        reviews: 129,
+        tags: "ragi millet healthy snack murukku gluten free",
+        image: "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "1904",
+        stock: 64,
+        suggestedRetail: 960,
+        desc: "Zero-maida finger millet (ragi) crunchy chakli seasoned with roasted cumin and sesame. High in dietary fiber and calcium, ideal for wellness cafes and retail counters.",
+        aiPros: "Huge consumer shift towards millets in Hyderabad IT corridors; sells quickly at counters.",
+        aiCons: "More fragile than maida snacks; keep nitrogen-flushed bags upright.",
+        aiMargin: "Retail ₹40/packet. Box cost ₹28/pack. 42% retail margin for grocers."
+      },
+      {
+        id: "HB005",
+        name: "Hot & Fresh Mirchi Mixture",
+        cat: "Sweets & Namkeen",
+        pack: "5 kg Commercial Tin",
+        weight: "5.0 kg",
+        price: 740,
+        tiers: [[5, 690], [20, 635]],
+        rating: 4.5,
+        reviews: 264,
+        tags: "namkeen mixture spicy snack sev peanut",
+        image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "2106",
+        stock: 53,
+        suggestedRetail: 1100,
+        desc: "Traditional crunchy Hyderabadi spicy mixture packed with gram flour sev, roasted peanuts, curry leaves, and fried green chillies. Crispy, spicy, and savory.",
+        aiPros: "High repeat purchases during evening tea hours; sealed moisture-proof tin.",
+        aiCons: "High spice profile; make sure to offer mild varieties alongside.",
+        aiMargin: "Repacked into 250g retail pouches at ₹60 yields ₹1,200 (62% ROI)."
+      },
+      {
+        id: "HB006",
+        name: "Guntur Red Chilli Powder",
+        cat: "Spices & Masalas",
+        pack: "5 kg Commercial Pack",
+        weight: "5.0 kg",
+        price: 1460,
+        tiers: [[5, 1375], [20, 1290]],
+        rating: 4.8,
+        reviews: 96,
+        tags: "spice masala chilli guntur hot cooking",
+        image: "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "0904",
+        stock: 28,
+        suggestedRetail: 1850,
+        desc: "Direct from Guntur agricultural yards. Cold-ground stemless S17 red chillies offering brilliant natural fiery red color and intense pungency.",
+        aiPros: "Zero artificial colors; commercial kitchens need 20% less powder due to high potency.",
+        aiCons: "Very potent; staff must use gloves and masks when decanting.",
+        aiMargin: "Commercial kitchen staple with steady year-round demand."
+      },
+      {
+        id: "HB007",
+        name: "Gulab Jamun Premix",
+        cat: "Sweets & Namkeen",
+        pack: "5 kg Premix Bag",
+        weight: "5.0 kg",
+        price: 920,
+        tiers: [[5, 870], [20, 810]],
+        rating: 4.6,
+        reviews: 155,
+        tags: "sweet gulab jamun premix mithai dessert",
+        image: "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "1901",
+        stock: 36,
+        suggestedRetail: 1350,
+        desc: "Instant dairy-rich premix. Just add water, knead, fry, and soak. Produces approximately 350 soft, melt-in-mouth gulab jamuns.",
+        aiPros: "Saves 3 hours of kitchen preparation time; zero cracking during frying.",
+        aiCons: "Do not over-knead dough to maintain spongy syrup absorption.",
+        aiMargin: "350 pieces sold at ₹10 each generates ₹3,500 from a ₹920 bag!"
+      },
+      {
+        id: "HB008",
+        name: "Cocoa Compound for Bakeries",
+        cat: "Bakery Raw Materials",
+        pack: "5 kg Slab Box (10x500g)",
+        weight: "5.0 kg",
+        price: 1650,
+        tiers: [[5, 1560], [20, 1440]],
+        rating: 4.7,
+        reviews: 84,
+        tags: "cocoa chocolate bakery cake slab dark",
+        image: "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "1806",
+        stock: 19,
+        suggestedRetail: 2100,
+        desc: "Rich dark chocolate compound slab with high cocoa butter equivalents. Exceptional glossy finish for dipping, ganache, cake writing, and shavings.",
+        aiPros: "No tempering required; melts smoothly at 45°C without seizing.",
+        aiCons: "Store below 24°C in summer to prevent bloom.",
+        aiMargin: "Gives premium cake creations high perceived value and 5x margins."
+      },
+      {
+        id: "HB009",
+        name: "Hyderabadi Khara Toast",
+        cat: "Osmania & Toast",
+        pack: "Box of 40 pcs · 2 kg",
+        weight: "2.0 kg",
+        price: 390,
+        tiers: [[5, 360], [20, 325]],
+        rating: 4.4,
+        reviews: 173,
+        tags: "toast khari biscuit bakery tea crunchy",
+        image: "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: false,
+        hsn: "1905",
+        stock: 72,
+        suggestedRetail: 520,
+        desc: "Flaky puff pastry salted khari rusks baked with pure vegetable shortening and cumin seeds. Super crunchy morning accompaniment for hot chai.",
+        aiPros: "Very budget-friendly bulk rate; staple item in Old City tea stalls.",
+        aiCons: "Fragile puff layers; avoid stacking more than 4 cartons high.",
+        aiMargin: "Turnover frequency is very fast (sells out within 3-4 days)."
+      },
+      {
+        id: "HB010",
+        name: "Cold-Pressed Groundnut Oil",
+        cat: "Bakery Raw Materials",
+        pack: "15 Litre Commercial Tin",
+        weight: "15.0 L",
+        price: 2180,
+        tiers: [[5, 2080], [20, 1950]],
+        rating: 4.6,
+        reviews: 62,
+        tags: "oil cooking fast food kitchen groundnut",
+        image: "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "1508",
+        stock: 14,
+        suggestedRetail: 2600,
+        desc: "Traditional wood-pressed (kachi ghani) unfiltered peanut oil. High smoke point (232°C) makes it ideal for repeated frying of samosas, namkeen, and sweets.",
+        aiPros: "Does not turn black quickly during deep frying; imparts authentic nutty aroma.",
+        aiCons: "Heavy tin container; requires a tap or dispensing pump.",
+        aiMargin: "Low oil absorption saves 15% on overall kitchen frying oil consumption."
+      },
+      {
+        id: "HB011",
+        name: "Dried Curry Leaves & Masala Kit",
+        cat: "Spices & Masalas",
+        pack: "Box of 10 x 250 g Packs",
+        weight: "2.5 kg",
+        price: 560,
+        tiers: [[5, 520], [20, 475]],
+        rating: 4.5,
+        reviews: 77,
+        tags: "curry masala spice seasoning leaves aroma",
+        image: "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1509358271058-acd22cc93898?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "0910",
+        stock: 45,
+        suggestedRetail: 750,
+        desc: "Sun-dried organic green curry leaves blended with dry roasted coriander, cumin, black pepper, and whole bay leaves. Essential seasoning for snacks and curries.",
+        aiPros: "Retains fresh green aroma for months without refrigeration.",
+        aiCons: "Reseal tightly after opening to prevent loss of volatile oils.",
+        aiMargin: "Individual 250g packs easily retail at ₹75 each."
+      },
+      {
+        id: "HB012",
+        name: "Jowar & Bajra Energy Bites",
+        cat: "Millet Snacks",
+        pack: "Box of 30 packs · 1.5 kg",
+        weight: "1.5 kg",
+        price: 840,
+        tiers: [[5, 780], [20, 720]],
+        rating: 4.8,
+        reviews: 118,
+        tags: "millet jowar bajra healthy energy bite jaggery",
+        image: "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=700&q=80",
+        gallery: [
+          "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?auto=format&fit=crop&w=700&q=80",
+          "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=700&q=80"
+        ],
+        gst: true,
+        hsn: "1904",
+        stock: 27,
+        suggestedRetail: 1200,
+        desc: "Crunchy multigrain roasted sorghum (jowar) and pearl millet (bajra) clusters sweetened with organic jaggery and roasted almonds. Zero refined sugar.",
+        aiPros: "Top trending SKU in gym cafes and IT campus food courts; healthy snacking trend.",
+        aiCons: "Shelf life is 4 months (contains real nuts and no chemical preservatives).",
+        aiMargin: "Cost per pack is ₹28, retails at ₹40 (43% margin)."
+      }
+    ];
+
+    // Application State Management
+    const state = {
+      cart: JSON.parse(localStorage.getItem("hyderabiz-cart") || "{}"),
+      orders: JSON.parse(localStorage.getItem("hyderabiz-orders") || "[]"),
+      category: "All",
+      query: "",
+      maxPrice: 2500,
+      compareList: JSON.parse(localStorage.getItem("hyderabiz-compare") || "[]"),
+      selectedProductModal: null,
+      deliveryArea: "Banjara Hills",
+      couponDiscount: 0,
+      appliedCoupon: "",
+      geminiKey: localStorage.getItem("hyderabiz-gemini-key") || ""
+    };
+
+    // Currency Formatter (Indian Rupees)
+    const money = n => "₹" + Math.round(n).toLocaleString("en-IN");
+
+    // Dynamic Volume Tier Price Calculator
+    function currentPrice(p) {
+      let q = state.cart[p.id] || 0;
+      let price = p.price;
+      for (const [minQty, tierPrice] of p.tiers) {
+        if (q >= minQty) price = tierPrice;
+      }
+      return price;
+    }
+
+    function saveState() {
+      localStorage.setItem("hyderabiz-cart", JSON.stringify(state.cart));
+      localStorage.setItem("hyderabiz-orders", JSON.stringify(state.orders));
+      localStorage.setItem("hyderabiz-compare", JSON.stringify(state.compareList));
+    }
+
+    function showToast(text, type = "normal") {
+      const el = document.createElement("div");
+      el.className = `toast rounded-xl px-4 py-3 text-xs font-bold text-white shadow-2xl flex items-center gap-2 pointer-events-auto ${type === "error" ? "bg-red-600" : "bg-slate-900 border border-slate-700"}`;
+      el.innerHTML = `<span>${type === "error" ? "⚠" : "✓"}</span><span>${text}</span>`;
+      document.getElementById("toastRoot").appendChild(el);
+      setTimeout(() => el.remove(), 3200);
+    }
+
+    // Render Categories in Sidebar
+    function renderCategories() {
+      const cats = ["All", ...new Set(products.map(p => p.cat))];
+      document.getElementById("categoryFilters").innerHTML = cats.map(c => `
+        <label class="flex cursor-pointer items-center justify-between p-1 rounded-lg hover:bg-slate-50 transition">
+          <span class="flex items-center gap-2">
+            <input type="radio" name="catFilter" ${state.category === c ? "checked" : ""} onchange="setCategory('${c}')" class="text-brand">
+            <span>${c}</span>
+          </span>
+          <span class="text-[10px] text-slate-400 font-bold">${c === "All" ? products.length : products.filter(p => p.cat === c).length}</span>
+        </label>
+      `).join("");
+    }
+
+    // Render Product Grid with Real Images & Action Buttons
+    function renderProducts() {
+      const q = (document.getElementById("search")?.value || state.query).toLowerCase().trim();
+      state.query = q;
+      const gstOnly = document.getElementById("gstOnly")?.checked;
+      const stockOnly = document.getElementById("stockOnly")?.checked;
+      const topRatedOnly = document.getElementById("topRatedOnly")?.checked;
+
+      let list = products.filter(p => {
+        const matchCat = state.category === "All" || p.cat === state.category;
+        const matchPrice = p.price <= state.maxPrice;
+        const matchGst = !gstOnly || p.gst;
+        const matchStock = !stockOnly || p.stock > 0;
+        const matchRating = !topRatedOnly || p.rating >= 4.7;
+        const matchQuery = !q || `${p.name} ${p.cat} ${p.tags} ${p.pack} ${p.desc}`.toLowerCase().includes(q);
+        return matchCat && matchPrice && matchGst && matchStock && matchRating && matchQuery;
+      });
+
+      // Sorting
+      const sort = document.getElementById("sortSelect")?.value;
+      if (sort === "low") list.sort((a, b) => a.price - b.price);
+      else if (sort === "high") list.sort((a, b) => b.price - a.price);
+      else if (sort === "rating") list.sort((a, b) => b.rating - a.rating);
+      else if (sort === "margin") list.sort((a, b) => (b.suggestedRetail - b.price) - (a.suggestedRetail - a.price));
+
+      document.getElementById("resultCount").textContent = `Showing ${list.length} of ${products.length} wholesale SKUs`;
+
+      // Active filters pills
+      let activeHtml = "";
+      if (state.category !== "All") {
+        activeHtml += `<button onclick="setCategory('All')" class="rounded-full bg-blue-100 hover:bg-blue-200 px-3 py-1 text-xs font-bold text-brand flex items-center gap-1">× ${state.category}</button>`;
+      }
+      if (q) {
+        activeHtml += `<button onclick="clearSearch()" class="rounded-full bg-blue-100 hover:bg-blue-200 px-3 py-1 text-xs font-bold text-brand flex items-center gap-1">× “${q}”</button>`;
+      }
+      if (state.maxPrice < 3000) {
+        activeHtml += `<button onclick="updatePrice(3000)" class="rounded-full bg-slate-200 hover:bg-slate-300 px-3 py-1 text-xs font-bold text-slate-700 flex items-center gap-1">× Under ${money(state.maxPrice)}</button>`;
+      }
+      document.getElementById("activeFilters").innerHTML = activeHtml;
+
+      // Product Grid Output
+      if (!list.length) {
+        document.getElementById("productGrid").innerHTML = `
+          <div class="col-span-full rounded-2xl bg-white p-12 text-center shadow-card border border-slate-100">
+            <div class="text-5xl">🔎</div>
+            <h3 class="mt-3 font-black text-slate-900 text-lg">No matching wholesale products</h3>
+            <p class="text-xs text-slate-500 mt-1">Try searching for “chai”, “maida”, “biscuit” or increase your price filter.</p>
+            <button onclick="resetFilters()" class="mt-4 rounded-xl bg-brand px-4 py-2 text-xs font-bold text-white">Reset All Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      document.getElementById("productGrid").innerHTML = list.map(p => productCardHtml(p)).join("");
+    }
+
+    // HTML Generator for Each Product Card
+    function productCardHtml(p) {
+      const q = state.cart[p.id] || 0;
+      const unit = currentPrice(p);
+      const savings = p.price - unit;
+      const isComparing = state.compareList.includes(p.id);
+      const retailMargin = Math.round(((p.suggestedRetail - p.price) / p.suggestedRetail) * 100);
+
+      return `
+        <article class="group rounded-2xl bg-white p-4 shadow-card border border-slate-100 transition hover:-translate-y-1 hover:shadow-xl flex flex-col justify-between">
+          <div>
+            <!-- Real HD Image Container with Badges -->
+            <div class="relative h-44 w-full overflow-hidden rounded-xl bg-slate-100 cursor-pointer" onclick="openProductDetail('${p.id}')">
+              <img src="${p.image}" alt="${p.name}" loading="lazy" class="h-full w-full object-cover group-hover:scale-105 transition duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition duration-300 flex items-end p-2.5">
+                <span class="rounded-lg bg-white/90 backdrop-blur-sm px-2.5 py-1 text-[11px] font-extrabold text-slate-900">
+                  👁️ Click for AI Reviews & Gallery
+                </span>
+              </div>
+              <div class="absolute top-2 left-2 flex flex-col gap-1">
+                <span class="rounded-md bg-slate-900/80 backdrop-blur-sm px-2 py-0.5 text-[10px] font-extrabold text-white">
+                  ${p.gst ? "GST 18%" : "Tax Free"}
+                </span>
+                <span class="rounded-md bg-emerald-700 text-white px-2 py-0.5 text-[10px] font-bold">
+                  ~${retailMargin}% Resale Margin
+                </span>
+              </div>
+              <button onclick="event.stopPropagation(); toggleCompare('${p.id}')" 
+                title="Compare SKU" 
+                class="absolute top-2 right-2 h-7 w-7 rounded-lg ${isComparing ? 'bg-brand text-white' : 'bg-white/80 text-slate-700'} backdrop-blur-sm flex items-center justify-center text-xs shadow hover:scale-110 transition">
+                ⚖️
+              </button>
+            </div>
+
+            <!-- Meta & Title -->
+            <div class="mt-3 flex items-center justify-between text-xs">
+              <span class="rounded bg-blue-50 px-2 py-0.5 text-[10px] font-bold text-brand uppercase">${p.cat}</span>
+              <span class="text-slate-500 font-semibold cursor-pointer hover:text-brand" onclick="openProductDetail('${p.id}')">⭐ ${p.rating} (${p.reviews})</span>
+            </div>
+
+            <h3 class="line-clamp-2 mt-1.5 font-black text-slate-900 text-sm leading-snug cursor-pointer hover:text-brand transition" onclick="openProductDetail('${p.id}')">
+              ${p.name}
+            </h3>
+            <p class="mt-0.5 text-xs text-slate-500 font-medium">${p.pack}</p>
+
+            <!-- Price & Tier Display -->
+            <div class="mt-2.5 flex items-baseline justify-between">
+              <div>
+                <span class="text-xl font-black text-slate-900">${money(unit)}</span>
+                <span class="text-xs text-slate-400">/ pack</span>
+              </div>
+              ${savings > 0 ? `<span class="text-xs font-black text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded">Tier Saved ${money(savings)}</span>` : ""}
+            </div>
+
+            <!-- Wholesale Tiers Pill -->
+            <div class="mt-2 rounded-lg bg-amber-50/80 border border-amber-200/60 p-1.5 text-[11px] font-bold text-amber-900 flex justify-between">
+              <span>5+ packs: ${money(p.tiers[0][1])}</span>
+              <span>20+ packs: ${money(p.tiers[1][1])}</span>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="mt-3.5 space-y-2 pt-2 border-t border-slate-100">
+            <div class="flex gap-2">
+              <button onclick="addToCart('${p.id}')" class="flex-1 rounded-xl bg-saffron py-2.5 text-xs font-black text-slate-950 hover:bg-saffron-dark active:scale-95 transition shadow-sm">
+                ${q > 0 ? `In Cart (${q}) +` : "Add to Cart"}
+              </button>
+              <button onclick="addToCart('${p.id}', 5)" title="Add 5 packs to unlock Tier 1 price" class="rounded-xl border border-brand bg-blue-50/50 px-3 py-2 text-xs font-extrabold text-brand hover:bg-brand hover:text-white transition">
+                Bulk +5
+              </button>
+            </div>
+            <div class="flex justify-between items-center text-[10px]">
+              <span class="text-slate-400 font-medium">📦 ${p.stock} packs ready</span>
+              <button onclick="openProductDetail('${p.id}')" class="text-brand font-bold hover:underline flex items-center gap-1">
+                <span>🤖</span> AI Insights →
+              </button>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    // Filter & Category Handlers
+    function setCategory(cat, btnEl = null) {
+      state.category = cat;
+      document.querySelectorAll(".cat-pill").forEach(el => {
+        el.className = "cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-medium text-slate-600 hover:bg-slate-100";
+      });
+      if (btnEl) {
+        btnEl.className = "cat-pill whitespace-nowrap rounded-lg px-3 py-1.5 transition font-bold bg-brand text-white shadow-sm";
+      }
+      renderCategories();
+      renderProducts();
+    }
+
+    function updatePrice(val) {
+      state.maxPrice = Number(val);
+      document.getElementById("priceLabel").textContent = money(val);
+      renderProducts();
+    }
+
+    function clearSearch() {
+      document.getElementById("search").value = "";
+      state.query = "";
+      renderProducts();
+    }
+
+    function resetFilters() {
+      state.category = "All";
+      state.maxPrice = 2500;
+      document.getElementById("priceRange").value = 2500;
+      document.getElementById("priceLabel").textContent = money(2500);
+      document.getElementById("gstOnly").checked = false;
+      document.getElementById("stockOnly").checked = false;
+      document.getElementById("topRatedOnly").checked = false;
+      clearSearch();
+      renderCategories();
+      renderProducts();
+    }
+
+    function updateDeliveryArea() {
+      state.deliveryArea = document.getElementById("location").value;
+      const speeds = {
+        "Banjara Hills": "2 to 3 hours",
+        "Charminar": "1 to 2 hours",
+        "Abids": "1 to 2 hours",
+        "Secunderabad": "3 to 4 hours",
+        "Mehdipatnam": "2 hours",
+        "Kukatpally": "4 to 5 hours",
+        "Hitec City": "3 to 4 hours",
+        "Jubilee Hills": "3 hours"
+      };
+      const speed = speeds[state.deliveryArea] || "3 to 4 hours";
+      document.getElementById("deliveryTimeEst").textContent = speed;
+      showToast(`Delivery route updated for ${state.deliveryArea} (est. ${speed})`);
+    }
+
+    // ============================================================
+    // SHOPPING CART & TOTALS LOGIC
+    // ============================================================
+    function addToCart(id, qty = 1) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      state.cart[id] = (state.cart[id] || 0) + qty;
+      saveState();
+      updateCartBadge();
+      showToast(`Added ${qty} × ${p.name} to wholesale cart`);
+      renderProducts();
+    }
+
+    function addBundleDirect(skuList) {
+      skuList.forEach(id => {
+        state.cart[id] = (state.cart[id] || 0) + 1;
+      });
+      saveState();
+      updateCartBadge();
+      showToast(`Wholesale combo added to cart!`);
+      renderProducts();
+      openCart();
+    }
+
+    function addComboToCart(type) {
+      if (type === 'chai') {
+        addToCart('HB002', 1);
+        addToCart('HB001', 2);
+        openCart();
+      }
+    }
+
+    function cartData() {
+      return Object.entries(state.cart).map(([id, qty]) => ({
+        p: products.find(x => x.id === id),
+        qty
+      })).filter(x => x.p && x.qty > 0);
+    }
+
+    function totals() {
+      const rows = cartData();
+      let subtotal = 0;
+      let base = 0;
+      rows.forEach(({ p, qty }) => {
+        subtotal += currentPrice(p) * qty;
+        base += p.price * qty;
+      });
+      let tierDiscount = Math.max(0, base - subtotal);
+      let couponOff = 0;
+      if (state.couponDiscount > 0) {
+        couponOff = subtotal * (state.couponDiscount / 100);
+      }
+      const afterDiscount = Math.max(0, subtotal - couponOff);
+      const gst = afterDiscount * 0.18;
+      const total = afterDiscount + gst;
+      return { rows, base, tierDiscount, couponOff, subtotal: afterDiscount, gst, total };
+    }
+
+    function updateCartBadge() {
+      const count = cartData().reduce((a, x) => a + x.qty, 0);
+      document.getElementById("cartCount").textContent = count;
+    }
+
+    function openCart() {
+      renderCart();
+      document.getElementById("cartBackdrop").classList.remove("hidden");
+      document.getElementById("cartDrawer").classList.remove("translate-x-full");
+    }
+
+    function closeCart() {
+      document.getElementById("cartBackdrop").classList.add("hidden");
+      document.getElementById("cartDrawer").classList.add("translate-x-full");
+    }
+
+    function renderCart() {
+      const t = totals();
+      const count = t.rows.reduce((a, x) => a + x.qty, 0);
+      document.getElementById("cartSubtitle").textContent = `${count} commercial packs · ${money(t.total)}`;
+
+      // Free shipping progress bar
+      const progress = Math.min(100, Math.round((t.subtotal / 10000) * 100));
+      document.getElementById("freeShippingBar").style.width = `${progress}%`;
+      document.getElementById("freeShippingPercent").textContent = `${progress}%`;
+      if (t.subtotal >= 10000) {
+        document.getElementById("freeShippingText").innerHTML = `<span class="text-emerald-700 font-extrabold">🎉 You unlocked FREE Hyderabad delivery!</span>`;
+      } else {
+        document.getElementById("freeShippingText").textContent = `Add ${money(10000 - t.subtotal)} more for FREE delivery`;
+      }
+
+      // Cart Items HTML
+      if (!t.rows.length) {
+        document.getElementById("cartItems").innerHTML = `
+          <div class="py-16 text-center text-slate-400">
+            <div class="text-6xl">🛒</div>
+            <p class="mt-3 font-black text-slate-700 text-sm">Your wholesale cart is empty</p>
+            <p class="text-xs text-slate-400 mt-1">Add items from catalog or ask AI for a combo.</p>
+          </div>
+        `;
+      } else {
+        document.getElementById("cartItems").innerHTML = t.rows.map(({ p, qty }) => {
+          const unit = currentPrice(p);
+          // Check next tier benefit
+          let nextTierNotice = "";
+          if (qty < 5) {
+            nextTierNotice = `<p class="text-[10px] text-amber-700 font-semibold mt-1">Add ${5 - qty} more to unlock ${money(p.tiers[0][1])}/pack</p>`;
+          } else if (qty < 20) {
+            nextTierNotice = `<p class="text-[10px] text-amber-700 font-semibold mt-1">Add ${20 - qty} more to unlock ${money(p.tiers[1][1])}/pack</p>`;
+          }
+
+          return `
+            <div class="rounded-xl border border-slate-200 bg-white p-3 shadow-sm">
+              <div class="flex gap-3">
+                <img src="${p.image}" alt="${p.name}" class="h-16 w-16 rounded-lg object-cover shrink-0 border border-slate-100">
+                <div class="min-w-0 flex-1">
+                  <p class="line-clamp-1 text-xs font-black text-slate-900">${p.name}</p>
+                  <p class="text-[11px] text-slate-400">${money(unit)} / pack · ${p.pack}</p>
+                  <p class="text-xs font-extrabold text-slate-900 mt-1">Subtotal: ${money(unit * qty)}</p>
+                  ${nextTierNotice}
+                  <div class="mt-2 flex items-center gap-2">
+                    <button onclick="changeQty('${p.id}', -1)" class="h-6 w-6 rounded border border-slate-300 font-bold hover:bg-slate-100 flex items-center justify-center text-xs">−</button>
+                    <b class="text-xs px-1">${qty}</b>
+                    <button onclick="changeQty('${p.id}', 1)" class="h-6 w-6 rounded border border-slate-300 font-bold hover:bg-slate-100 flex items-center justify-center text-xs">+</button>
+                    <button onclick="removeItem('${p.id}')" class="ml-auto text-[11px] text-red-600 font-bold hover:underline">Remove</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      document.getElementById("cartSubtotal").textContent = money(t.base);
+      document.getElementById("cartDiscount").textContent = `- ${money(t.tierDiscount + t.couponOff)}`;
+      document.getElementById("cartGst").textContent = money(t.gst);
+      document.getElementById("cartTotal").textContent = money(t.total);
+
+      // Wholesale Minimum Requirement (₹2,500)
+      const isMinMet = t.subtotal >= 2500;
+      if (isMinMet) {
+        document.getElementById("minOrderNote").innerHTML = `✓ Minimum wholesale order met (₹2,500). GST tax invoice included.`;
+        document.getElementById("minOrderNote").className = `rounded-lg bg-emerald-50 p-2 text-xs font-semibold text-emerald-800 border border-emerald-200`;
+      } else {
+        document.getElementById("minOrderNote").innerHTML = `Add ${money(2500 - t.subtotal)} more to reach ₹2,500 wholesale order minimum.`;
+        document.getElementById("minOrderNote").className = `rounded-lg bg-amber-50 p-2 text-xs font-semibold text-amber-800 border border-amber-200`;
+      }
+
+      const checkoutBtn = document.getElementById("checkoutBtn");
+      checkoutBtn.disabled = !isMinMet;
+      checkoutBtn.className = `w-full rounded-xl py-3.5 text-xs font-black transition shadow-md ${isMinMet ? "bg-saffron text-slate-950 hover:bg-saffron-dark cursor-pointer" : "bg-slate-200 text-slate-400 cursor-not-allowed"}`;
+    }
+
+    function changeQty(id, delta) {
+      state.cart[id] = (state.cart[id] || 0) + delta;
+      if (state.cart[id] <= 0) delete state.cart[id];
+      saveState();
+      updateCartBadge();
+      renderCart();
+      renderProducts();
+    }
+
+    function removeItem(id) {
+      delete state.cart[id];
+      saveState();
+      updateCartBadge();
+      renderCart();
+      renderProducts();
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById("couponCode").value.trim().toUpperCase();
+      const noteEl = document.getElementById("couponNote");
+      if (code === "WELCOME10") {
+        state.couponDiscount = 10;
+        state.appliedCoupon = "WELCOME10";
+        noteEl.textContent = "✓ 10% wholesale promo applied!";
+        noteEl.classList.remove("hidden");
+        showToast("Coupon WELCOME10 applied (10% off)");
+      } else if (code === "HYDCHAI") {
+        state.couponDiscount = 5;
+        state.appliedCoupon = "HYDCHAI";
+        noteEl.textContent = "✓ 5% chai partner discount applied!";
+        noteEl.classList.remove("hidden");
+        showToast("Coupon HYDCHAI applied (5% off)");
+      } else {
+        showToast("Invalid promo code. Try WELCOME10", "error");
+      }
+      renderCart();
+    }
+
+    // ============================================================
+    // PRODUCT DETAIL & AI REVIEWS MODAL
+    // ============================================================
+    function openProductDetail(id) {
+      const p = products.find(x => x.id === id);
+      if (!p) return;
+      state.selectedProductModal = p;
+
+      document.getElementById("modalProductTitle").textContent = p.name;
+      document.getElementById("modalName").textContent = p.name;
+      document.getElementById("modalCategory").textContent = p.cat;
+      document.getElementById("modalRating").textContent = `⭐ ${p.rating} (${p.reviews} verified business reviews)`;
+      document.getElementById("modalPack").textContent = `${p.pack} · Weight: ${p.weight} · HSN: ${p.hsn}`;
+      document.getElementById("modalPrice").textContent = money(p.price);
+      document.getElementById("modalDesc").textContent = p.desc;
+      document.getElementById("modalMainImg").src = p.image;
+
+      document.getElementById("modalTiers").textContent = `Wholesale volume pricing: 5+ packs at ${money(p.tiers[0][1])} | 20+ packs at ${money(p.tiers[1][1])}`;
+      document.getElementById("modalPros").textContent = p.aiPros;
+      document.getElementById("modalCons").textContent = p.aiCons;
+      document.getElementById("modalMarginAdvice").textContent = p.aiMargin;
+
+      // Gallery Thumbnails
+      document.getElementById("modalThumbnails").innerHTML = p.gallery.map(img => `
+        <img src="${img}" onclick="document.getElementById('modalMainImg').src='${img}'" class="h-14 w-14 rounded-lg object-cover cursor-pointer border border-slate-200 hover:border-brand transition">
+      `).join("");
+
+      document.getElementById("modalQty").value = 1;
+      openModal("detailModal");
+    }
+
+    function stepModalQty(delta) {
+      const input = document.getElementById("modalQty");
+      let val = Math.max(1, (parseInt(input.value) || 1) + delta);
+      input.value = val;
+    }
+
+    function addModalItemToCart() {
+      if (!state.selectedProductModal) return;
+      const qty = parseInt(document.getElementById("modalQty").value) || 1;
+      addToCart(state.selectedProductModal.id, qty);
+      closeModal("detailModal");
+      openCart();
+    }
+
+    // ============================================================
+    // AI MARGIN & RESELLER ROI CALCULATOR
+    // ============================================================
+    function initRoiSelect() {
+      const sel = document.getElementById("roiProduct");
+      sel.innerHTML = products.map(p => `
+        <option value="${p.id}">${p.name} (Wholesale: ${money(p.price)})</option>
+      `).join("");
+      calculateRoi();
+    }
+
+    function calculateRoi() {
+      const selId = document.getElementById("roiProduct").value;
+      const p = products.find(x => x.id === selId) || products[0];
+      const qty = parseInt(document.getElementById("roiQty").value) || 1;
+      const retailPrice = parseFloat(document.getElementById("roiRetailPrice").value) || (p.suggestedRetail);
+
+      // Volume tier wholesale price calculation
+      let unitCost = p.price;
+      let tierNote = "Base wholesale rate";
+      for (const [minQty, price] of p.tiers) {
+        if (qty >= minQty) {
+          unitCost = price;
+          tierNote = `Tier unlocked (${minQty}+ packs at ${money(price)})`;
+        }
+      }
+
+      const totalCost = unitCost * qty;
+      const totalRevenue = retailPrice * qty;
+      const netProfit = totalRevenue - totalCost;
+      const margin = totalRevenue > 0 ? Math.round((netProfit / totalRevenue) * 100) : 0;
+      const gstItc = Math.round(totalCost * 0.18);
+
+      document.getElementById("roiWholesaleCost").textContent = money(totalCost);
+      document.getElementById("roiTierApplied").textContent = tierNote;
+      document.getElementById("roiRetailRevenue").textContent = money(totalRevenue);
+      document.getElementById("roiNetProfit").textContent = money(netProfit);
+      document.getElementById("roiMarginPercent").textContent = `${margin}% Net Profit Margin`;
+      document.getElementById("roiGstItc").textContent = money(gstItc);
+    }
+
+    function addRoiOrderToCart() {
+      const selId = document.getElementById("roiProduct").value;
+      const qty = parseInt(document.getElementById("roiQty").value) || 1;
+      addToCart(selId, qty);
+      closeModal("roiModal");
+      openCart();
+    }
+
+    // ============================================================
+    // PRODUCT COMPARISON TOOL
+    // ============================================================
+    function toggleCompare(id) {
+      const idx = state.compareList.indexOf(id);
+      if (idx > -1) {
+        state.compareList.splice(idx, 1);
+        showToast("Removed from comparison");
+      } else {
+        if (state.compareList.length >= 3) {
+          showToast("You can compare up to 3 products at a time", "error");
+          return;
+        }
+        state.compareList.push(id);
+        showToast("Added to comparison matrix");
+      }
+      saveState();
+      updateCompareBadge();
+      renderProducts();
+    }
+
+    function updateCompareBadge() {
+      const el = document.getElementById("compareCount");
+      if (state.compareList.length > 0) {
+        el.textContent = state.compareList.length;
+        el.classList.remove("hidden");
+      } else {
+        el.classList.add("hidden");
+      }
+    }
+
+    function openCompareModal() {
+      if (!state.compareList.length) {
+        showToast("Select at least 1 product to compare using ⚖️ button", "error");
+        return;
+      }
+      const list = products.filter(p => state.compareList.includes(p.id));
+      document.getElementById("compareContent").innerHTML = `
+        <table class="w-full text-left border-collapse border border-slate-200">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="p-3 border border-slate-200 font-bold text-slate-700">Specification</th>
+              ${list.map(p => `
+                <th class="p-3 border border-slate-200 text-center">
+                  <img src="${p.image}" class="h-24 w-24 object-cover mx-auto rounded-lg mb-2">
+                  <div class="font-black text-slate-900">${p.name}</div>
+                  <button onclick="toggleCompare('${p.id}'); openCompareModal()" class="text-[10px] text-red-500 hover:underline">Remove</button>
+                </th>
+              `).join("")}
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">Category</td>
+              ${list.map(p => `<td class="p-3 border border-slate-200 text-center font-semibold text-brand">${p.cat}</td>`).join("")}
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">Pack Specs</td>
+              ${list.map(p => `<td class="p-3 border border-slate-200 text-center">${p.pack}</td>`).join("")}
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">Base Wholesale Price</td>
+              ${list.map(p => `<td class="p-3 border border-slate-200 text-center font-black text-slate-900">${money(p.price)}</td>`).join("")}
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">5+ Tier Price</td>
+              ${list.map(p => `<td class="p-3 border border-slate-200 text-center font-bold text-emerald-700">${money(p.tiers[0][1])}</td>`).join("")}
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">20+ Tier Price</td>
+              ${list.map(p => `<td class="p-3 border border-slate-200 text-center font-extrabold text-emerald-800">${money(p.tiers[1][1])}</td>`).join("")}
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">GST ITC Claimable</td>
+              ${list.map(p => `<td class="p-3 border border-slate-200 text-center font-bold text-blue-700">${p.gst ? "Yes (18%)" : "Exempt"}</td>`).join("")}
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">Reseller Profit Yield</td>
+              ${list.map(p => `<td class="p-3 border border-slate-200 text-center text-xs text-slate-600">${p.aiMargin}</td>`).join("")}
+            </tr>
+            <tr>
+              <td class="p-3 border border-slate-200 font-bold">Direct Action</td>
+              ${list.map(p => `
+                <td class="p-3 border border-slate-200 text-center">
+                  <button onclick="addToCart('${p.id}'); closeModal('compareModal'); openCart()" class="rounded-lg bg-saffron px-3 py-1.5 text-xs font-black text-slate-900 hover:bg-saffron-dark">
+                    + Add to Cart
+                  </button>
+                </td>
+              `).join("")}
+            </tr>
+          </tbody>
+        </table>
+      `;
+      openModal("compareModal");
+    }
+
+    // ============================================================
+    // B2B AI CONCIERGE CHAT ENGINE (LOCAL & GEMINI API READY)
+    // ============================================================
+    function toggleAiDrawer(open) {
+      const drawer = document.getElementById("aiDrawer");
+      const backdrop = document.getElementById("aiBackdrop");
+      if (open) {
+        drawer.classList.remove("translate-x-full");
+        backdrop.classList.remove("hidden");
+        document.getElementById("aiChatInput").focus();
+      } else {
+        drawer.classList.add("translate-x-full");
+        backdrop.classList.add("hidden");
+      }
+    }
+
+    function toggleApiKeyInput() {
+      const bar = document.getElementById("apiKeyBar");
+      bar.classList.toggle("hidden");
+    }
+
+    function saveApiKey() {
+      const key = document.getElementById("geminiApiKey").value.trim();
+      state.geminiKey = key;
+      localStorage.setItem("hyderabiz-gemini-key", key);
+      document.getElementById("aiEngineLabel").textContent = key ? "Google Gemini 2.5 Flash" : "Autonomous B2B Model";
+      showToast(key ? "Gemini API key configured!" : "Reverted to built-in autonomous AI engine");
+      toggleApiKeyInput();
+    }
+
+    function appendChatMessage(role, htmlContent) {
+      const container = document.getElementById("aiChatMessages");
+      const wrapper = document.createElement("div");
+      if (role === "user") {
+        wrapper.className = "flex items-start justify-end gap-2.5";
+        wrapper.innerHTML = `
+          <div class="max-w-[85%] rounded-2xl rounded-tr-none bg-brand p-3.5 text-white shadow-sm font-medium leading-relaxed">
+            ${htmlContent}
+          </div>
+          <div class="h-8 w-8 rounded-lg bg-slate-900 text-white flex items-center justify-center text-xs font-bold shrink-0">👤</div>
+        `;
+      } else {
+        wrapper.className = "flex items-start gap-2.5";
+        wrapper.innerHTML = `
+          <div class="h-8 w-8 rounded-lg bg-brand text-white flex items-center justify-center text-sm font-bold shrink-0">🤖</div>
+          <div class="max-w-[88%] rounded-2xl rounded-tl-none bg-white p-3.5 shadow-sm border border-slate-200 text-slate-800 leading-relaxed space-y-2">
+            ${htmlContent}
+          </div>
+        `;
+      }
+      container.appendChild(wrapper);
+      container.scrollTop = container.scrollHeight;
+    }
+
+    function sendQuickPrompt(promptText) {
+      document.getElementById("aiChatInput").value = promptText;
+      handleAiSubmit(new Event("submit"));
+    }
+
+    async function handleAiSubmit(e) {
+      e.preventDefault();
+      const input = document.getElementById("aiChatInput");
+      const query = input.value.trim();
+      if (!query) return;
+
+      appendChatMessage("user", query);
+      input.value = "";
+
+      // Show typing indicator
+      const typingId = "aiTypingIndicator";
+      const typingDiv = document.createElement("div");
+      typingDiv.id = typingId;
+      typingDiv.className = "flex items-center gap-2 text-xs text-slate-400 font-semibold pl-10";
+      typingDiv.innerHTML = `<span class="animate-spin text-sm">⏳</span> Hyderabiz AI is calculating wholesale catalog & margins...`;
+      document.getElementById("aiChatMessages").appendChild(typingDiv);
+      document.getElementById("aiChatMessages").scrollTop = document.getElementById("aiChatMessages").scrollHeight;
+
+      // Check if Gemini API key is configured
+      if (state.geminiKey) {
+        try {
+          const geminiResponse = await callGeminiApi(query);
+          document.getElementById(typingId)?.remove();
+          appendChatMessage("ai", geminiResponse);
+          return;
+        } catch (err) {
+          console.warn("Gemini API call failed, falling back to autonomous engine", err);
+        }
+      }
+
+      // Built-In Autonomous B2B Concierge Reasoning Engine
+      setTimeout(() => {
+        document.getElementById(typingId)?.remove();
+        const responseHtml = generateAutonomousAiResponse(query);
+        appendChatMessage("ai", responseHtml);
+      }, 500);
+    }
+
+    // Built-in intelligent response generator
+    function generateAutonomousAiResponse(q) {
+      const query = q.toLowerCase();
+
+      // Case 1: Tea Stall / Irani Cafe Inquiry
+      if (query.includes("tea") || query.includes("chai") || query.includes("cafe") || query.includes("biscuit")) {
+        const chai = products.find(p => p.id === "HB002");
+        const biscuit = products.find(p => p.id === "HB001");
+        const toast = products.find(p => p.id === "HB009");
+
+        return `
+          <p class="font-bold text-slate-900">Recommended Irani Cafe Sourcing Bundle:</p>
+          <p>For high customer volume in Hyderabad, we recommend starting with authentic CTC Irani tea powder paired with fresh Osmania biscuits and khara toast.</p>
+          <div class="grid gap-2 pt-2">
+            ${renderAiProductCard(chai, 2)}
+            ${renderAiProductCard(biscuit, 5)}
+            ${renderAiProductCard(toast, 5)}
+          </div>
+          <div class="mt-2 rounded-lg bg-emerald-50 p-2.5 text-[11px] text-emerald-800 border border-emerald-200">
+            <b>💡 Profit Projection:</b> 2 packs of chai powder yield ~800 cups. At ₹15/cup, you generate <b>₹12,000 revenue</b> on a ₹3,500 inventory investment!
+          </div>
+        `;
+      }
+
+      // Case 2: Margin / Resale / Profit Inquiry
+      if (query.includes("margin") || query.includes("profit") || query.includes("resell") || query.includes("roi")) {
+        const sorted = [...products].sort((a, b) => (b.suggestedRetail - b.price) - (a.suggestedRetail - a.price)).slice(0, 3);
+        return `
+          <p class="font-bold text-slate-900">Top 3 Highest Profit Margin Products:</p>
+          <p>These SKUs provide the highest retail markup and value-addition for Hyderabad food businesses:</p>
+          <div class="space-y-2 pt-1">
+            ${sorted.map(p => `
+              <div class="rounded-xl border border-slate-200 p-2.5 bg-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <img src="${p.image}" class="h-10 w-10 rounded-lg object-cover">
+                  <div>
+                    <b class="text-xs text-slate-900">${p.name}</b>
+                    <p class="text-[10px] text-slate-500">Buy: ${money(p.price)} ➔ Resell: ${money(p.suggestedRetail)}</p>
+                  </div>
+                </div>
+                <button onclick="addToCart('${p.id}', 5)" class="rounded-lg bg-saffron px-2.5 py-1 text-[11px] font-black text-slate-900">
+                  + Add 5
+                </button>
+              </div>
+            `).join("")}
+          </div>
+          <p class="text-[11px] text-slate-600 mt-2">Plus, eligible GST registered buyers claim an extra 18% Input Tax Credit (ITC) on all invoices.</p>
+        `;
+      }
+
+      // Case 3: Bakery & Raw Materials
+      if (query.includes("bakery") || query.includes("maida") || query.includes("cake") || query.includes("chocolate") || query.includes("cookie")) {
+        const maida = products.find(p => p.id === "HB003");
+        const cocoa = products.find(p => p.id === "HB008");
+        const oil = products.find(p => p.id === "HB010");
+
+        return `
+          <p class="font-bold text-slate-900">Bakery Production Raw Material Kit:</p>
+          <p>Here are the industrial-grade bakery raw materials stocked at our Bahadurpura hub:</p>
+          <div class="grid gap-2 pt-2">
+            ${renderAiProductCard(maida, 2)}
+            ${renderAiProductCard(cocoa, 2)}
+            ${renderAiProductCard(oil, 1)}
+          </div>
+          <p class="text-[11px] text-slate-500 mt-1">✓ Mysore Maida has 11.5% gluten for consistent pastry elasticity.</p>
+        `;
+      }
+
+      // Case 4: Millet & Health Snacks
+      if (query.includes("millet") || query.includes("healthy") || query.includes("ragi") || query.includes("sugar")) {
+        const ragi = products.find(p => p.id === "HB004");
+        const jowar = products.find(p => p.id === "HB012");
+
+        return `
+          <p class="font-bold text-slate-900">Healthy Millet & Roasted Snacks:</p>
+          <p>Zero-maida finger millet and sorghum snacks formulated for modern health-conscious consumers in Hyderabad:</p>
+          <div class="grid gap-2 pt-2">
+            ${renderAiProductCard(ragi, 3)}
+            ${renderAiProductCard(jowar, 3)}
+          </div>
+          <div class="mt-2 rounded-lg bg-blue-50 p-2 text-[11px] text-blue-900 border border-blue-200">
+            <b>📈 Market Note:</b> Millet snack demand in Hyderabad grew by 48% year-over-year. Very high sell-through rate at billing counters.
+          </div>
+        `;
+      }
+
+      // Case 5: Default Smart Search
+      const matched = products.filter(p => `${p.name} ${p.cat} ${p.tags}`.toLowerCase().includes(query)).slice(0, 2);
+      if (matched.length > 0) {
+        return `
+          <p class="font-bold text-slate-900">Matching Wholesale Inventory:</p>
+          <p>Found ${matched.length} wholesale products matching your inquiry:</p>
+          <div class="grid gap-2 pt-2">
+            ${matched.map(p => renderAiProductCard(p, 1)).join("")}
+          </div>
+        `;
+      }
+
+      return `
+        <p class="font-bold text-slate-900">Hyderabad Wholesale Concierge Advice:</p>
+        <p>I can assist with custom bulk quotes, GST input credit calculations, or high-demand SKU recommendations for cafes, bakeries, and retail counters.</p>
+        <div class="rounded-xl bg-slate-100 p-2.5 text-[11px] text-slate-700 space-y-1">
+          <p>• <b>Free Delivery:</b> Orders ₹10,000+ unlock free freight across all Hyderabad zones.</p>
+          <p>• <b>Tier Pricing:</b> Automatically drops at 5+ and 20+ units per item.</p>
+        </div>
+      `;
+    }
+
+    function renderAiProductCard(p, suggestedQty = 1) {
+      return `
+        <div class="rounded-xl border border-slate-200 bg-white p-2.5 shadow-sm flex items-center justify-between gap-2">
+          <img src="${p.image}" class="h-12 w-12 rounded-lg object-cover shrink-0">
+          <div class="min-w-0 flex-1">
+            <b class="text-xs text-slate-900 truncate block">${p.name}</b>
+            <span class="text-[11px] text-slate-500 font-bold">${money(p.price)} · ${p.pack}</span>
+          </div>
+          <button onclick="addToCart('${p.id}', ${suggestedQty})" class="rounded-lg bg-saffron px-3 py-1.5 text-xs font-black text-slate-900 hover:bg-saffron-dark shrink-0">
+            + Add (${suggestedQty})
+          </button>
+        </div>
+      `;
+    }
+
+    // Optional Real Google Gemini API Call
+    async function callGeminiApi(prompt) {
+      const catalogSummary = products.map(p => `${p.id}: ${p.name} (${p.cat}, Pack: ${p.pack}, Wholesale Price: ₹${p.price}, Tiers: 5+ at ₹${p.tiers[0][1]}, 20+ at ₹${p.tiers[1][1]})`).join("\n");
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${state.geminiKey}`;
+      
+      const payload = {
+        contents: [{
+          parts: [{
+            text: `You are Hyderabiz AI, an elite B2B e-commerce concierge for food businesses in Hyderabad, India.
+Catalog Data:\n${catalogSummary}
+
+User question: "${prompt}"
+
+Provide actionable, concise B2B procurement advice. Mention exact product names and wholesale prices in ₹. Explain profit margins and bulk tier discounts.`
+          }]
+        }]
+      };
+
+      const resp = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
+      const data = await resp.json();
+      const rawText = data.candidates?.[0]?.content?.parts?.[0]?.text || "Thank you. Let me check the catalog.";
+      // Basic markdown to html
+      return rawText.replace(/\n\n/g, "<br><br>").replace(/\n/g, "<br>").replace(/\*\*(.*?)\*\*/g, "<b>$1</b>");
+    }
+
+    // ============================================================
+    // MODAL HELPERS, ORDERS & CHECKOUT
+    // ============================================================
+    function openModal(id) {
+      if (id === "dashboardModal") renderOrders();
+      if (id === "roiModal") initRoiSelect();
+      if (id === "checkoutModal") {
+        document.getElementById("checkoutLocation").textContent = `${document.getElementById("location").value}, Hyderabad`;
+      }
+      document.getElementById(id).classList.remove("hidden");
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.add("hidden");
+    }
+
+    function openCheckout() {
+      if (totals().subtotal < 2500) return;
+      closeCart();
+      openModal("checkoutModal");
+    }
+
+    function toggleGst() {
+      const gstinEl = document.getElementById("gstin");
+      gstinEl.required = document.getElementById("gstToggle").checked;
+      gstinEl.disabled = !gstinEl.required;
+      if (gstinEl.disabled) gstinEl.value = "";
+    }
+
+    // Checkout Form Submission & Tax Invoice
+    document.getElementById("checkoutForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const t = totals();
+      const orderId = "HYD-" + Date.now().toString().slice(-8);
+
+      const order = {
+        id: orderId,
+        date: new Date().toLocaleString("en-IN"),
+        business: form.get("business"),
+        owner: form.get("owner"),
+        phone: form.get("phone"),
+        area: form.get("area"),
+        gstin: form.get("gstin") || "Unregistered / Consumer",
+        payment: form.get("payment"),
+        itemsCount: t.rows.reduce((a, x) => a + x.qty, 0),
+        subtotal: t.subtotal,
+        gst: t.gst,
+        total: t.total,
+        status: "Dispatched from Bahadurpura",
+        lines: t.rows.map(x => ({ id: x.p.id, name: x.p.name, pack: x.p.pack, qty: x.qty, unit: currentPrice(x.p), total: currentPrice(x.p) * x.qty }))
+      };
+
+      state.orders.unshift(order);
+      saveState();
+
+      // Setup Confirmation & Tax Invoice
+      document.getElementById("successMessage").textContent = `Order ${orderId} · Delivering to ${order.area} via ${order.payment}`;
+      document.getElementById("invoicePreview").innerHTML = `
+        <div class="border-b border-slate-200 pb-3 flex justify-between items-start">
+          <div>
+            <h3 class="text-base font-black text-slate-900">HYDERABIZ WHOLESALE B2B</h3>
+            <p class="text-[11px] text-slate-500">Bahadurpura Central Warehouse, Hyderabad - 500064</p>
+            <p class="text-[11px] text-slate-500 font-bold">GSTIN: 36AABCH8492Q1Z8 · Tax Invoice: <b>${orderId}</b></p>
+          </div>
+          <div class="text-right text-[11px]">
+            <b class="text-slate-900">${order.business}</b><br>
+            GSTIN: <b>${order.gstin}</b><br>
+            Area: ${order.area}, Hyderabad
+          </div>
+        </div>
+
+        <table class="w-full mt-3 text-left border-collapse border border-slate-200 text-xs">
+          <thead>
+            <tr class="bg-slate-100">
+              <th class="p-2 border border-slate-200">SKU Description</th>
+              <th class="p-2 border border-slate-200 text-center">Qty</th>
+              <th class="p-2 border border-slate-200 text-right">Unit Rate</th>
+              <th class="p-2 border border-slate-200 text-right">Taxable Amt</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${order.lines.map(l => `
+              <tr>
+                <td class="p-2 border border-slate-200 font-semibold">${l.name} (${l.pack})</td>
+                <td class="p-2 border border-slate-200 text-center font-bold">${l.qty}</td>
+                <td class="p-2 border border-slate-200 text-right">${money(l.unit)}</td>
+                <td class="p-2 border border-slate-200 text-right font-bold">${money(l.total)}</td>
+              </tr>
+            `).join("")}
+          </tbody>
+        </table>
+
+        <div class="mt-3 text-right space-y-1 text-xs">
+          <p>Taxable Value: <b>${money(order.subtotal)}</b></p>
+          <p>CGST (9%): <b>${money(order.gst / 2)}</b></p>
+          <p>SGST (9%): <b>${money(order.gst / 2)}</b></p>
+          <p class="text-sm font-black text-slate-900 border-t pt-1">Invoice Total: ${money(order.total)}</p>
+        </div>
+      `;
+
+      // Clear Cart
+      state.cart = {};
+      saveState();
+      updateCartBadge();
+      closeModal("checkoutModal");
+      openModal("successModal");
+      renderProducts();
+    });
+
+    function printInvoice() {
+      const html = document.getElementById("invoicePreview").innerHTML;
+      const win = window.open("", "_blank");
+      const doc = win.document;
+      doc.open();
+      const invoiceStyle = "body{font-family:'Plus Jakarta Sans',Arial,sans-serif;padding:40px;color:#1e293b}table{width:100%;border-collapse:collapse;margin-top:15px}td,th{padding:8px 12px;border:1px solid #cbd5e1;text-align:left}";
+      doc.write("<!DOCTYPE html><html" + "><head><title>Hyderabiz B2B Tax Invoice</title><style>" + invoiceStyle + "<" + "/style><" + "/head><body" + ">" + html + "<" + "/body><" + "/html>");
+      doc.close();
+      win.print();
+    }
+
+    function renderOrders() {
+      const root = document.getElementById("ordersList");
+      if (!state.orders.length) {
+        root.innerHTML = `
+          <div class="py-12 text-center text-slate-400">
+            <div class="text-5xl">📦</div>
+            <p class="mt-3 font-bold text-slate-700">No past wholesale orders yet</p>
+            <p class="text-xs text-slate-400 mt-1">Confirmed business orders and Bahadurpura live tracking will appear here.</p>
+          </div>
+        `;
+        return;
+      }
+
+      root.innerHTML = state.orders.map(o => `
+        <div class="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-100 pb-2">
+            <div>
+              <b class="text-slate-900 text-xs">${o.id}</b>
+              <p class="text-[11px] text-slate-500">${o.date} · ${o.itemsCount} packs · ${money(o.total)}</p>
+            </div>
+            <span class="rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-extrabold text-emerald-700 border border-emerald-200">
+              ● ${o.status}
+            </span>
+          </div>
+
+          <!-- 4-Stage Dispatch Timeline -->
+          <div class="flex items-center text-[10px] text-slate-600 font-bold px-1">
+            <div class="flex items-center gap-1 text-emerald-700"><span class="h-2 w-2 rounded-full bg-emerald-600"></span> Confirmed</div>
+            <div class="h-0.5 flex-1 bg-emerald-400 mx-2"></div>
+            <div class="flex items-center gap-1 text-emerald-700"><span class="h-2 w-2 rounded-full bg-emerald-600 animate-pulse"></span> Picked at Bahadurpura</div>
+            <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
+            <div class="text-slate-400">On Delivery Van</div>
+            <div class="h-0.5 flex-1 bg-slate-200 mx-2"></div>
+            <div class="text-slate-400">Delivered</div>
+          </div>
+
+          <div class="flex items-center justify-between pt-1">
+            <span class="text-[11px] text-slate-500 font-medium">Delivering to: <b>${o.area}</b> via ${o.payment}</span>
+            <button onclick="reorder('${o.id}')" class="rounded-lg bg-blue-50 px-3 py-1 text-xs font-bold text-brand hover:bg-brand hover:text-white transition">
+              🔄 1-Click Reorder
+            </button>
+          </div>
+        </div>
+      `).join("");
+    }
+
+    function reorder(orderId) {
+      const o = state.orders.find(x => x.id === orderId);
+      if (!o || !o.lines) return;
+      o.lines.forEach(l => {
+        state.cart[l.id] = (state.cart[l.id] || 0) + l.qty;
+      });
+      saveState();
+      updateCartBadge();
+      renderProducts();
+      showToast("Previous wholesale order restocked into your cart");
+      closeModal("dashboardModal");
+      openCart();
+    }
+
+    function goHome() {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      state.category = "All";
+      clearSearch();
+      renderCategories();
+      renderProducts();
+    }
+
+    // Keyboard shortcut '/' to focus search
+    window.addEventListener("keydown", e => {
+      if (e.key === "/" && document.activeElement.tagName !== "INPUT" && document.activeElement.tagName !== "TEXTAREA") {
+        e.preventDefault();
+        document.getElementById("search")?.focus();
+      }
+    });
+
+    // Auto-rotating promo offers
+    const promoOffers = [
+      "Special Irani Chai & Osmania Biscuit Combo Packs — Extra 10% wholesale discount on 20+ boxes!",
+      "Bakery Volume Savings — Save up to ₹3,000 on 20+ sacks of Mysore Maida & Cocoa compound!",
+      "Free express delivery across Hyderabad on commercial orders above ₹10,000!",
+      "Millet Monday — 10% instant discount on roasted Ragi Murukku & Jowar Energy Bites!"
+    ];
+    let promoIdx = 0;
+    setInterval(() => {
+      promoIdx = (promoIdx + 1) % promoOffers.length;
+      const el = document.getElementById("promoText");
+      if (el) el.textContent = promoOffers[promoIdx];
+    }, 4500);
+
+    // Initial Bootsrapping
+    document.getElementById("search").addEventListener("input", renderProducts);
+    renderCategories();
+    renderProducts();
+    updateCartBadge();
+    updateCompareBadge();
+    if (state.geminiKey) {
+      document.getElementById("geminiApiKey").value = state.geminiKey;
+      document.getElementById("aiEngineLabel").textContent = "Google Gemini 2.5 Flash";
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "user_id": "default_shopper",
+  "preferred_brands": [
+    "Sony"
+  ],
+  "disliked_brands": [],
+  "favorite_categories": [],
+  "budget_tier": "Budget-conscious",
+  "max_budget": 130.0,
+  "sizes": {},
+  "lifestyle_notes": [
+    "Runner / Active fitness enthusiast",
+    "Frequent traveler / Air commute"
+  ],
+  "special_requirements": [],
+  "last_active": "2026-10-22T22:03:26.569233"
+}
